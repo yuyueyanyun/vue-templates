@@ -1,0 +1,39 @@
+{
+  "name": "vue-template",
+  "version": "1.0.0",
+  "description": "vue配置模板",
+  "main": "main.js",
+  "private": true,
+  "workspaces": [
+    "docs"
+  ],
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "docs:dev": "npm run -C docs dev",
+    "docs:build": "npm run -C docs build",
+    "docs:serve": "npm run -C docs serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "yuyue-cli": "bin/main"
+  },
+  "author": "lei",
+  "license": "MIT",
+  "repository": "https://github.com/yuyueyanyun/vue-templates.git",
+  "devDependencies": {
+    "@types/node": "^18.15.2",
+    "tsx": "^3.12.5"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "commander": "^10.0.0",
+    "download-git-repo": "^3.0.2",
+    "execa": "^7.1.1",
+    "fs-extra": "^11.1.1",
+    "inquirer": "^9.1.5",
+    "log-symbols": "^5.1.0",
+    "ora": "^6.3.0"
+  }
+}

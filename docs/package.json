@@ -1,0 +1,26 @@
+{
+  "name": "@yuyue/docs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "serve": "vitepress serve . --port 8080"
+  },
+  "devDependencies": {
+    "sass": "^1.60.0",
+    "vitepress": "^1.0.0-alpha.54",
+    "vue": "^3.2.47"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "element-plus": "^2.3.1",
+    "escape-html": "^1.0.3",
+    "markdown-it": "^13.0.1",
+    "markdown-it-container": "^3.0.0",
+    "normalize.css": "^8.0.1",
+    "prismjs": "^1.29.0",
+    "stats.js": "^0.17.0",
+    "three": "^0.150.1"
+  }
+}
