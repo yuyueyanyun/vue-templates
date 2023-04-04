@@ -24,9 +24,7 @@ const [sourceVisible, toggleSourceVisible] = useToggle()
 
 const formatPathDemos = computed(() => {
   const demos = {}
-  console.log(props)
   Object.keys(props.demos).forEach((key) => {
-    console.log(props.demos[key])
     demos[key.replace('../../examples/', '').replace('.vue', '')] =
       props.demos[key].default
   })
@@ -115,7 +113,7 @@ const copyCode = async () => {
 
 <style scoped lang="scss">
 .example {
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--el-border-color);
   border-radius: var(--el-border-radius-base);
 
   .op-btns {
@@ -127,22 +125,22 @@ const copyCode = async () => {
 
     .el-icon {
       &:hover {
-        color: var(--text-color);
+        color: var(--el-text-color-primary);
       }
     }
 
     .op-btn {
       margin: 0 0.5rem;
       cursor: pointer;
-      color: var(--text-color-lighter);
+      color: var(--el-text-color-secondary);
       transition: 0.2s;
 
       &.github a {
         transition: 0.2s;
-        color: var(--text-color-lighter);
+        color: var(--el-text-color-secondary);
 
         &:hover {
-          color: var(--text-color);
+          color: var(--el-text-color-primary);
         }
       }
     }
@@ -152,10 +150,10 @@ const copyCode = async () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--el-border-color);
     height: 44px;
     box-sizing: border-box;
-    background-color: var(--bg-color, #fff);
+    background-color: var(--el-bg-color, #fff);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     margin-top: -1px;
@@ -175,5 +173,8 @@ const copyCode = async () => {
       color: var(--el-color-primary);
     }
   }
+}
+.m-0 {
+  margin: 0;
 }
 </style>

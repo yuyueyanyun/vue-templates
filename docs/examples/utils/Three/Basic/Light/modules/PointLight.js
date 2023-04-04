@@ -16,7 +16,7 @@ class InitWebGLRenderer {
     this.light = new PointLight(_parameters.color, _parameters.intensity, _parameters.distance, _parameters.decay);
     this.setPosition(position);
     this.shadow(castShadow);
-    return new PointLight(color, intensity);
+    return this.light;
   }
   setPosition(position) {
     if(!position)  throw new Error('err');

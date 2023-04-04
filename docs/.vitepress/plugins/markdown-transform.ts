@@ -20,7 +20,7 @@ export function MarkdownTransform(): Plugin {
         headers: [],
         footers: [],
         scriptSetups: [
-          `const demos = import.meta.glob('../../examples/${componentId}/*.vue')`,
+          `const demos = import.meta.globEager('../../examples/${componentId}/*.vue')`,
         ],
       }
       return combineMarkdown(code, [combineScriptSetup(append.scriptSetups)]);

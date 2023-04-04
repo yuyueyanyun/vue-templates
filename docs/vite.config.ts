@@ -2,6 +2,10 @@ import path from 'path'
 import { defineConfig } from 'vite'
 // import VueMacros from 'unplugin-vue-macros/vite'
 // import vueJsx from '@vitejs/plugin-vue-jsx'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+import Components from 'unplugin-vue-components/vite'
+
 import {
   projRoot,
 } from './internal/paths'
@@ -35,8 +39,26 @@ export default defineConfig(async ({ mode }) => {
       //     vueJsx: vueJsx(),
       //   },
       // }),
+      // https://github.com/antfu/unplugin-vue-components
+      Components({
+        dirs: ['.vitepress/vitepress/components'],
+        allowOverrides: true,
+        // custom resolvers
+        resolvers: [
+          // auto import icons
+          // https://github.com/antfu/unplugin-icons
+          IconsResolver(),
+        ],
+
+        // allow auto import and register components used in markdown
+        include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+      }),
+      Icons({
+        autoInstall: true,
+      }),
       MarkdownTransform(),
     ],
+    
     optimizeDeps: {
       include: [],
     },

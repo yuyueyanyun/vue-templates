@@ -23,6 +23,6 @@ defineProps({
 .example-showcase {
   padding: 1.5rem;
   margin: 0.5px;
-  background-color: var(--bg-color);
+  background-color: var(--el-bg-color);
 }
 </style>

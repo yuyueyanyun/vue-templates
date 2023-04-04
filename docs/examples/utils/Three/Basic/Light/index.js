@@ -8,11 +8,11 @@ const LightType = {
 
 class Light {
   constructor({type, ...parameters} = {}) {
-    if(Object.hasOwn(renderType, type)) {
+    if(Object.hasOwn(LightType, type)) {
       return new LightType[type](parameters);
     }else {
       throw new Error('err');
     }
   }
 }
-export default Render;
+export default Light;

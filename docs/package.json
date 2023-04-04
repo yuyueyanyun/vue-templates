@@ -1,5 +1,5 @@
 {
-  "name": "@yuyue/docs",
+  "name": "@yuyueyanyun/docs",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,12 +8,16 @@
     "serve": "vitepress serve . --port 8080"
   },
   "devDependencies": {
+    "@iconify-json/ri": "^1.1.5",
     "sass": "^1.60.0",
+    "unplugin-icons": "^0.16.1",
+    "unplugin-vue-components": "^0.24.1",
     "vitepress": "^1.0.0-alpha.54",
     "vue": "^3.2.47"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
     "element-plus": "^2.3.1",
     "escape-html": "^1.0.3",
     "markdown-it": "^13.0.1",

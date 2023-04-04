@@ -1,5 +1,6 @@
 
 import 'normalize.css'
+import 'element-plus/dist/index.css'
 
 // for dark mode
 import Layout from './components/layout.vue'

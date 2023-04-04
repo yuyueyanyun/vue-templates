@@ -1,4 +1,5 @@
 import ElementPlus from 'element-plus'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import DefaultTheme from 'vitepress/theme'
 import type { Theme } from 'vitepress'
 import Layout, {  
@@ -13,9 +14,11 @@ export default define<Theme>({
   // Layout: Layout,
   enhanceApp: ({ app }) => {
     app.use(ElementPlus)
-
     globals.forEach(([name, Comp]) => {
       app.component(name, Comp)
     })
+    for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+      app.component(key, component)
+    }
   },
 })

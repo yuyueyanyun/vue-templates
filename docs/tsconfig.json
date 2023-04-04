@@ -3,6 +3,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "paths": {
+      "~/*": ["./.vitepress/vitepress/*"]
       // "vue": ["./node_modules/vue/macros.d.ts"]
     },
   },

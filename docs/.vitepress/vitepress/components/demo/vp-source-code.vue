@@ -20,7 +20,7 @@ const decoded = computed(() => {
 </template>
 
 <style scoped lang="scss">
-.language-vue {
+.example-source-wrapper .language-vue {
   margin: 0;
   border-radius: 0;
 }
