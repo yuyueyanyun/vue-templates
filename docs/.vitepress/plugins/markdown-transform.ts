@@ -1,5 +1,4 @@
-import path from 'path'
-import { docRoot } from '../../internal/paths'
+import path from 'path';
 
 import type { Plugin } from 'vite'
 
@@ -15,12 +14,14 @@ export function MarkdownTransform(): Plugin {
       if(id.endsWith('docs/index.md')) return
       if(id.endsWith('zh-CN/index.md')) return
 
-      const componentId = path.basename(id, '.md')
+      const relativePath= path.relative('zh-CN', id);
+      console.log(relativePath)
+      const componentId = relativePath.replace(/.md$/, '').replaceAll('\\', '/');      
       const append: Append = {
         headers: [],
         footers: [],
         scriptSetups: [
-          `const demos = import.meta.globEager('../../examples/${componentId}/*.vue')`,
+          `const demos = import.meta.globEager('../../../examples/${componentId}/*.vue')`,
         ],
       }
       return combineMarkdown(code, [combineScriptSetup(append.scriptSetups)]);
@@ -44,7 +45,7 @@ const combineMarkdown = (
 
   if (headers.length > 0)
     code =
-      code.slice(0, sliceIndex) + headers.join('\n') + code.slice(sliceIndex)
+      code.slice(0, sliceIndex) + headers.join('\n') + code.slice(sliceIndex);
   return `${code}\n`
 }
 

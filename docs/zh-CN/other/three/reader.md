@@ -8,7 +8,7 @@ lang: zh-CN
 场景（Scene）、相机（PerspectiveCamera）和渲染器（WebGLRenderer），我们就能透过摄像机渲染出场景。
 :::demo
 
-reader/demo
+other/three/reader/demo
 
 :::
 ## 相机
@@ -21,7 +21,7 @@ reader/demo
 
 :::demo
 
-reader/perspectiveCamera
+other/three/reader/perspectiveCamera
 
 :::
 ### 正交投影相机（OrthographicCamera）
@@ -31,7 +31,7 @@ reader/perspectiveCamera
 
 :::demo
 
-reader/orthographicCamera
+other/three/reader/orthographicCamera
 
 :::
 

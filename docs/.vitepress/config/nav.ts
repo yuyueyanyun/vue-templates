@@ -22,8 +22,8 @@ interface NavItemWithChildren {
 }
 
 const nav:NavItem[] = [
-  { text: '模板', link: '/zh-CN/template/installation' },
-  { text: '其它', link: '/zh-CN/other/reader' },
+  { text: '模板', link: '/zh-CN/template/base/installation' },
+  { text: '其它', link: '/zh-CN/other/three/reader' },
 ]
 export default nav
 
