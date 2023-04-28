@@ -1,5 +1,6 @@
 import { PointLight } from 'three';
 
+// 点光源
 class InitWebGLRenderer {
   light;
   #parameters = {

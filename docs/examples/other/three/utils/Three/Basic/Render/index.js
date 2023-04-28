@@ -5,9 +5,9 @@ const renderType = {
 };
 
 class Render {
-  constructor({type, ...parameters} = {}) {
+  constructor({type, config, ...parameters} = {}) {
     if(Object.hasOwn(renderType, type)) {
-      return new renderType[type](parameters);
+      return new renderType[type](parameters, config);
     }else {
       throw new Error('err');
     }

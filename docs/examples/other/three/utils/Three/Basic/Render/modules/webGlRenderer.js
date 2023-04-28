@@ -22,7 +22,7 @@ class InitWebGLRenderer {
     needsUpdate: false, //  场景中的阴影贴图会在下次render调用时不刷新。默认是false
     type: PCFSoftShadowMap, // 定义阴影贴图类型
   };
-  constructor(parameters = {}, shadowMap={}) {
+  constructor(parameters = {}, shadowMap={}, config={}) {
     const _parameters = {};
     Object.keys(this.#parameters).forEach((key) => {
       _parameters[key] = Object.hasOwn(parameters, key) ? parameters[key]: this.#parameters[key];

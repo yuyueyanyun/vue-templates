@@ -2,26 +2,28 @@
   "name": "vue-template",
   "version": "1.0.0",
   "description": "vue配置模板",
-  "main": "main.js",
+  "main": "index.js",
   "private": true,
   "workspaces": [
     "docs",
     "packages"
   ],
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
-    "docs:dev": "npm run -C docs dev",
-    "docs:build": "npm run -C docs build",
-    "docs:serve": "npm run -C docs serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "lei",
+  "author": "Lei",
   "license": "MIT",
-  "repository": "https://github.com/yuyueyanyun/vue-templates.git",
+  "dependencies": {
+    "@types/node": "^18.16.1"
+  },
   "devDependencies": {
-    "@types/node": "^18.15.2",
-    "tsx": "^3.12.5"
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "esbuild": "^0.17.18",
+    "eslint": "^8.39.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-vue": "^9.11.0"
   }
 }

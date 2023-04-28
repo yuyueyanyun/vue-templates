@@ -1,0 +1,1 @@
+import{o as e,c as t}from"./chunks/framework.ed17f42d.js";const n=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"zh-CN/other/develop/vue.md"}'),a={name:"zh-CN/other/develop/vue.md"},_=Object.assign(a,{setup(o){return(r,s)=>(e(),t("div"))}});export{n as __pageData,_ as default};

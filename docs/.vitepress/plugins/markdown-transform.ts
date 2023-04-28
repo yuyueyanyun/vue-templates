@@ -15,8 +15,8 @@ export function MarkdownTransform(): Plugin {
       if(id.endsWith('zh-CN/index.md')) return
 
       const relativePath= path.relative('zh-CN', id);
-      console.log(relativePath)
-      const componentId = relativePath.replace(/.md$/, '').replaceAll('\\', '/');      
+      const componentId = relativePath.replace(/.md$/, '').replaceAll('\\', '/');  
+      console.log(componentId)    
       const append: Append = {
         headers: [],
         footers: [],
