@@ -1,1 +1,0 @@
-import{o as a,c as s,Q as n}from"./chunks/framework.ed17f42d.js";const e=n("",32),l=[e],c=JSON.parse('{"title":"git","description":"","frontmatter":{"title":"git","lang":"zh-CN"},"headers":[],"relativePath":"zh-CN/other/tutorial/git.md"}'),i={name:"zh-CN/other/tutorial/git.md"},d=Object.assign(i,{setup(p){return(t,r)=>(a(),s("div",null,l))}});export{c as __pageData,d as default};

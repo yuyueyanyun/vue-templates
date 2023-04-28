@@ -1,1 +1,0 @@
-import{o as e,c as a,Q as r}from"./chunks/framework.ed17f42d.js";const s=r("",8),n=[s],i=JSON.parse('{"title":"请求头","description":"","frontmatter":{"title":"请求头","lang":"zh-CN"},"headers":[],"relativePath":"zh-CN/other/http/header.md"}'),o={name:"zh-CN/other/http/header.md"},d=Object.assign(o,{setup(t){return(l,p)=>(e(),a("div",null,n))}});export{i as __pageData,d as default};

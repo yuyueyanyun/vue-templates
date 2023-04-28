@@ -1,1 +1,0 @@
-import{o as t,c as e}from"./chunks/framework.ed17f42d.js";const n=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"zh-CN/template/base/quickstart.md"}'),a={name:"zh-CN/template/base/quickstart.md"},_=Object.assign(a,{setup(s){return(r,c)=>(t(),e("div"))}});export{n as __pageData,_ as default};

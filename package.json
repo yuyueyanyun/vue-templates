@@ -9,6 +9,9 @@
     "packages"
   ],
   "scripts": {
+    "docs:dev": "npm run -C docs dev",
+    "docs:build": "npm run -C docs build",
+    "docs:serve": "npm run -C docs serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lei",

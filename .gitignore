@@ -1,7 +1,8 @@
 node_modules
-packages
+/packages
 package-lock.json
-/dist
+dist
+cache
 
 
 # local env files
