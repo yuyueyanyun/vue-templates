@@ -1,7 +1,16 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
     "target": "ESNext",
     "module": "ESNext",
+    "isolatedModules": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": false,
     "paths": {
       "~/*": ["./.vitepress/vitepress/*"],
       // "vue": ["./node_modules/vue/macros.d.ts"]

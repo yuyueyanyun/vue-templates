@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue'
-// import { Codemirror } from 'vue-codemirror'
 const { Codemirror } = await import('vue-codemirror')
 import { html } from '@codemirror/lang-html'
 import { css } from '@codemirror/lang-css'
