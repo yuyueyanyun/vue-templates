@@ -18,6 +18,23 @@ export default {
           items: [
             { text: 'iframe', link: '/zh-CN/other/html/iframe', },
           ] 
+        },
+        { 
+          text: '页面元素位置', 
+          link: '/zh-CN/other/html/element_possition',
+        },
+      ]
+    },
+    {
+      text: 'css',
+      items: [
+        {
+          text: '基础', 
+          link: '/zh-CN/other/css/base',
+        },
+        {
+          text: 'mask：掩膜', 
+          link: '/zh-CN/other/css/mask',
         }
       ]
     },
@@ -33,7 +50,7 @@ export default {
           items: [
             { text: '反射：Reflection', link: '/zh-CN/other/javaScript/reflection', },
             { text: '键的集合对象', link: '/zh-CN/other/javaScript/keyedCollections', },
-            { text: "数组", link: "/array" },
+            { text: "数组", link: "/zh-CN/other/javaScript/array" },
           ] 
         }
       ]
@@ -48,6 +65,19 @@ export default {
         { 
           text: 'svg', 
           link: '/zh-CN/other/animation/svg',
+        },
+        {
+          text: '滚动',
+          link: '/zh-CN/other/animation/scroll',
+        }
+      ]
+    },
+    {
+      text: 'http',
+      items: [
+        { 
+          text: '请求头', 
+          link: '/zh-CN/other/http/header'
         },
       ]
     },
@@ -70,6 +100,14 @@ export default {
         { 
           text: 'git', 
           link: '/zh-CN/other/tutorial/git'
+        },
+        { 
+          text: 'nvm', 
+          link: '/zh-CN/other/tutorial/nvm'
+        },
+        { 
+          text: 'npm', 
+          link: '/zh-CN/other/tutorial/npm'
         },
       ]
     }

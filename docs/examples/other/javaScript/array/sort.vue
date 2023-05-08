@@ -1,20 +1,16 @@
 <template>
-  <el-button type="primary" @click="handleExecute">执行</el-button>
-  <vue-codemirror
-    v-model="code"
-    placeholder="Code goes here..."
-    :autofocus="true"
-    :indent-with-tab="true"
-    :style="{ height: '300px' }"
-    :tab-size="2"
-    @ready="handleReady"
-  />
-  <div class="view">
-    {{ result }}
-  </div>
+  <Suspense>
+    <lq-codepen
+      :html="htmlTxt"
+      :javascript="code"
+   />
+  </Suspense>
 </template>
 <script setup>
-import { ref, shallowRef} from 'vue'
+import { ref } from 'vue'
+import { javascript } from '@codemirror/lang-javascript'
+
+const htmlTxt = ref(`<p id="demo"></p>`)
 const code = ref(`const arr = ['a2','b11', 'a1','b2', 'b1', '123', '01', '9'];
 const sortDeep = (str1, str2) => {
   function handle(arr1 = [], arr2 = []) {
@@ -36,17 +32,8 @@ const sortDeep = (str1, str2) => {
   }
   return str1 ? 1 : -1;
 };
-return arr.sort(sortDeep);`);
-const result = ref('');
+document.getElementById("demo").textContent = arr.sort(sortDeep) `)
 
-const view = shallowRef();
-const handleReady = (payload) => {
-  view.value = payload.view;
-}
-const handleExecute = () => {
-  result.value = new Function(code.value)();
-}
-handleExecute();
 </script>
 <style scoped lang="scss">
 .view {

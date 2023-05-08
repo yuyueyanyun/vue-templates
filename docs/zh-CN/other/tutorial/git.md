@@ -75,4 +75,80 @@ git stash clear
 ```code
 git pull --rebase origin release/xxxxxx
 ```
-建议使用rebase
+## add
+
+* 添加当前目录的所有变更
+```code
+git add .
+```
+* 或者添加指定的文件
+```code
+git add ./src/views
+```
+## commit
+
+```code
+git commit -m "<type>(scope): <subject>""
+```
+或者把内容提交至上一个 commit-id 里面
+```code
+git commit --amend
+```
+| 属性 | 说明 | 必须 |
+| ------- | ---------------------------| --- |
+| type | 用于说明git commit的类别<br>feat：新功能； fix：修复；docs：文档，style：格式（不影响代码运行的变动）；refactor：重构；perf：优化；test：增加测试；chore：构建过程或辅助工具的变动。 | true |
+| scope | 说明 commit 影响的范围，比如数据层、控制层、视图层 | false |
+| subject | 简短描述 | true |
+## push
+* 推送至远端并关联
+```code
+git push --set-upstream origin feature/xxxxxx
+```
+* 直接推送
+```code
+git push
+```
+* 强制覆盖**慎用**
+```code
+git push -f
+```
+## cherry-pick
+```code
+git cherry-pick <commitHash>
+```
+将指定的提交commitHash，应用于当前分支。
+## merge、cherry-pick、rebase
+* 放弃操作，回到操作前的样子。
+```code
+--abort 
+```
+* 退出操作，但是不回到操作前的样子。
+```code
+--quit 
+```
+* 解决代码冲突后，将修改的文件重新加入暂存区（git add .）执行以下命令继续操作
+```code
+--continue
+```
+## 多ssh-key
+>我们在日常工作中会遇到公司有个 gitlab，还有些自己的一些项目放在 github 上。这样就导致我们要配置不同的 ssh-key 对应不同的环境。
+* 生成私钥
+```code
+ssh-keygen -t rsa -C 'youremail@yourcompany.com'
+```
+```code
+ssh-keygen -t rsa -C 'youremail@your.com'
+```
+* 添加私钥
+1. `ssh-add -l` 来确私钥列表
+2. `ssh-add -D` 来清空私钥列表
+```code
+ssh-add ~/.ssh/id_rsa
+```
+如果执行 ssh-add 时提示 "Could not open a connection to your authentication agent"，可执行一下命令后再执行`ssh-add`
+
+之后我们需要将生成的密钥对中的公钥里的内容用文本编辑器打开，复制下来，添加到对应的平台上面，比如公司的 GitLab 或者 GitHub 等。
+
+> **user.name和user.name 保持和github账号一致**
+## 推荐使用
+[sourcetree](https://www.sourcetreeapp.com/)

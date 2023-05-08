@@ -6,13 +6,13 @@ lang: zh-CN
 # 使用键的集合对象
 ## Map
 键值对的集合，Map中的一个键**只能出现一次**, 任何值（对象或者基本类型）都可以作为一个键或一个值。
-```code
+```javascript
 const map = new Map();
 map.set('a', 1);
 // const map = new Map([['a', '1']]);
 map.delete('a');
 ```
-```code
+```javascript
 const map1 = new Map([['a', 1], ['b', 2]]);
 map1.forEach((value, key) => {
   console.log(`${key}：${value}`);
@@ -26,7 +26,7 @@ console.log(Array.from(map1, ([key, value]) => ({
 // [{key: 'a', value: 1}, {key: 'b', value: 2}]
 ```
 合并 **如果有重复的键值，则后面的会覆盖前面**
-```code
+```javascript
 const first = new Map();
 const second = new Map();
 const merged = new Map([...first, ...second]);
@@ -47,7 +47,8 @@ const merged = new Map([...first, ...second]);
 
 ## Set
 允许存储任何类型的唯一值。（NaN 和 undefined 都可以被存储在 Set 中，NaN 之间被视为相同的值）
-```code
+
+```javascript
 const set = new Set();
 set.add(1);
 set.add(2);
@@ -56,13 +57,13 @@ set.delete(1);
 set.clear();
 ```
 去重
-```code
+```javascript
 const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,32,3,4,5]
 console.log([...new Set(numbers)]);
 // [2, 3, 4, 5, 6, 7, 32];
 ```
 string
-```code
+```javascript
 let mySet = new Set('India');  // Set {'I', 'n', 'd', 'i', 'a'}
 mySet.size;  // 5
 ```

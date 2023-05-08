@@ -10,8 +10,8 @@
 .normal {
   width: 80px;
   height: 80px;
-  background: conic-gradient(yellowgreen, yellowgreen var(--per), 
-      transparent var(--per), transparent 100%); 
+  background: conic-gradient(yellowgreen, yellowgreen var(--per),
+      transparent var(--per), transparent 100%);
   transition: --per 300ms linear;
 }
 .normal:hover {
@@ -19,4 +19,3 @@
 }
 
 </style>
-  

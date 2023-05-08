@@ -7,7 +7,8 @@ lang: zh-CN
 
 ## transform 变形
 2D 或 3D 转换。
-```code
+
+```css
 transform: none|transform-functions;
 ```
 :::demo
@@ -17,9 +18,11 @@ other/animation/css/transform
 :::
 ## outline 轮廓线 
 通常是矩形，但也可以是非矩形的。和 border 很类似。
-```code
+
+```css
 outline: outline-width outline-style outline-color;
 ```
+
 区别：不占据空间，绘制于元素内容周围。
 :::demo
 
@@ -27,8 +30,8 @@ other/animation/css/outline
 
 :::
 
-## 自定义属性 property
-:::demo 许进行属性类型检查、设定默认值以及定义该自定义属性是否可以被继承。
+## property
+:::demo 自定义属性：进行属性类型检查、设定默认值以及定义该自定义属性是否可以被继承。
 
 other/animation/css/property
 
@@ -43,7 +46,7 @@ other/animation/css/property
 ## 滤镜属性 filter
 将模糊或颜色偏移等图形效果应用于元素。滤镜通常用于调整图像、背景和边框的渲染。
 
-```code
+```css
 filter: none | blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | saturate() | sepia() | url();
 ```
 
@@ -69,7 +72,8 @@ other/animation/css/filter
 | url() | 函数接受规定 SVG 滤镜的 XML 文件的位置 |
 ## transition 过渡
 可以为一个元素在不同状态之间切换的时候定义不同的过渡效果。比如在不同的伪元素之间切换，像是 `:hover`，`:active` 或者通过 JavaScript 实现的状态变化。
-```code
+
+```css
 transition: property duration timing-function delay;
 ```
 
@@ -83,9 +87,11 @@ transition: property duration timing-function delay;
 
 ## animation 动画
 指定一组或多组动画，每组之间用逗号相隔。
-```code
+
+```css
 animation: name duration timing-function delay iteration-count direction;
 ```
+
 | 属性    | 描述                |
 | ------- | --------------------------- |
 | name | 绑定到选择器的 keyframe 名称。 |

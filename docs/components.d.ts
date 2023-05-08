@@ -10,6 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     404: typeof import('./.vitepress/vitepress/components/404.vue')['default']
+    Codepen: typeof import('./.vitepress/vitepress/components/codepen.vue')['default']
     IRiCodeLine: typeof import('~icons/ri/code-line')['default']
     IRiFileCopyLine: typeof import('~icons/ri/file-copy-line')['default']
     IRiFlaskLine: typeof import('~icons/ri/flask-line')['default']
