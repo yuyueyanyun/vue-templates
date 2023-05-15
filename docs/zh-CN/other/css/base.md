@@ -17,5 +17,5 @@ lang: zh-CN
 | ----- | ------------------------|
 | calc() | 数学表达式。结果会用作属性值。可使用如下运算符：+ - * / |
 | max()、min() | 逗号分隔的值列表 - 在其中选择最大值/最小值。 |
-| var() | 自定义属性 |
-| @property | [查看](../animation/css.html#property) |
+| @property | [查看](./property.html#property) |
+| var() | 使用自定义属性 |

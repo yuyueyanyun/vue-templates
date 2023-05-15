@@ -23,7 +23,7 @@ interface NavItemWithChildren {
 
 const nav:NavItem[] = [
   { text: '模板', link: '/zh-CN/template/base/installation' },
-  { text: '其它', link: '/zh-CN/other/animation/css' },
+  { text: '其它', link: '/zh-CN/other/animation/all' },
 ]
 export default nav
 

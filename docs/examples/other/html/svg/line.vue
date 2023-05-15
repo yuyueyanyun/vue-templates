@@ -1,0 +1,34 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const htmlTxt = ref(`<svg
+  xmlns="http://www.w3.org/2000/svg" version="0.1"
+  viewBox="0, 0, 160, 160"
+>
+  <line x1="0" y1="0"
+    x2="140" y2="140"
+  />
+</svg>`)
+const cssTxt = `svg {
+  height: 100px;
+  border: 1px solid;
+}
+line {
+  stroke: black;
+  stroke-width: 5;
+  opacity: 0.1;
+}`
+
+</script>
+<template>
+  <Suspense>
+    <lq-codepen
+      :height="150"
+      :html="htmlTxt"
+      :css="cssTxt"
+   />
+  </Suspense>
+</template>
+<style scoped lang="scss">
+</style>
+  

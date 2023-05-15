@@ -1,13 +1,11 @@
 ---
-title: 组件
+title: 模板
 lang: zh-CN
 ---
 
 # npm安装
 
-> 安装组件
-```code
-
-or
-
+> 下载模板
+```
+npm init @yuyueyanyun/template@latest
 ```

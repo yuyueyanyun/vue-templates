@@ -17,11 +17,8 @@ export default {
           text: '标签', 
           items: [
             { text: 'iframe', link: '/zh-CN/other/html/iframe', },
+            { text: 'svg', link: '/zh-CN/other/html/svg', },
           ] 
-        },
-        { 
-          text: '页面元素位置', 
-          link: '/zh-CN/other/html/element_possition',
         },
       ]
     },
@@ -33,9 +30,37 @@ export default {
           link: '/zh-CN/other/css/base',
         },
         {
+          text: 'outline：轮廓线', 
+          link: '/zh-CN/other/css/outline',
+        },
+        {
+          text: 'scroll：滚动', 
+          link: '/zh-CN/other/css/scroll',
+        },
+        {
+          text: 'filter：滤镜', 
+          link: '/zh-CN/other/css/filter',
+        },
+        {
           text: 'mask：掩膜', 
           link: '/zh-CN/other/css/mask',
-        }
+        },
+        {
+          text: 'transform：变形', 
+          link: '/zh-CN/other/css/transform',
+        },
+        {
+          text: 'transition：过渡', 
+          link: '/zh-CN/other/css/transition',
+        },
+        {
+          text: 'animation：动画', 
+          link: '/zh-CN/other/css/animation',
+        },
+        {
+          text: 'property：自定义', 
+          link: '/zh-CN/other/css/property',
+        },
       ]
     },
     {
@@ -48,29 +73,34 @@ export default {
         {
           text: '标准内置对象', 
           items: [
+            { text: "数值", link: "/zh-CN/other/javaScript/number" },
+            { text: "数组", link: "/zh-CN/other/javaScript/array" },
             { text: '反射：Reflection', link: '/zh-CN/other/javaScript/reflection', },
             { text: '键的集合对象', link: '/zh-CN/other/javaScript/keyedCollections', },
-            { text: "数组", link: "/zh-CN/other/javaScript/array" },
           ] 
         }
       ]
     },
     {
-      text: '动画',
+      text: 'webAPI',
       items: [
         { 
-          text: 'css', 
-          link: '/zh-CN/other/animation/css',
+          text: '页面元素位置', 
+          link: '/zh-CN/other/webAPI/position',
         },
         { 
-          text: 'svg', 
-          link: '/zh-CN/other/animation/svg',
+          text: 'scroll：滚动', 
+          link: '/zh-CN/other/webAPI/scroll',
         },
-        {
-          text: '滚动',
-          link: '/zh-CN/other/animation/scroll',
-        }
+        { 
+          text: 'print：打印', 
+          link: '/zh-CN/other/webAPI/print',
+        },
       ]
+    },
+    {
+      text: '动画',
+      link: '/zh-CN/other/animation/all',
     },
     {
       text: 'http',
@@ -109,7 +139,28 @@ export default {
           text: 'npm', 
           link: '/zh-CN/other/tutorial/npm'
         },
+        { 
+          text: 'lodash', 
+          link: '/zh-CN/other/tutorial/lodash'
+        },
+        { 
+          text: 'dayjs', 
+          link: '/zh-CN/other/tutorial/dayjs'
+        },
+        { 
+          text: 'printjs', 
+          link: '/zh-CN/other/tutorial/printjs',
+        },
       ]
-    }
+    },
+    {
+      text: '收藏',
+      items: [
+        {
+          text: '动画', 
+          link: '/zh-CN/other/favorite/animation',
+        },
+      ]
+    },
   ],
 }

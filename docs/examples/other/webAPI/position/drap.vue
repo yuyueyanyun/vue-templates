@@ -8,26 +8,25 @@
 class Drap {
   static zIndex = 1
 
-  constructor (el, {
+  constructor(el, {
     style = {}
   } = {}) {
     this.el = el
     this.x = 0
     this.y = 0
     this.style = style
-    this.timeOutEvent = 0
   }
 
   init () {
     this.setEleStyle(this.style || {})
-    this.el.onmousedown = (e) => {
+    this.el.onpointerdown = (e) => {
       this.onMouseDown(e)
-      if (this.el.setCapture) this.el.setCapture()
+      if (this.el.setPointerCapture) this.el.setPointerCapture(e.pointerId)
     }
   }
 
   // 样式设置
-  setEleStyle (style) {
+  setEleStyle(style) {
     Object.keys(style).forEach((key) => {
       this.el.style[key] = style[key]
     })
@@ -37,24 +36,25 @@ class Drap {
   onMouseDown (e) {
     let zIndex = getComputedStyle(this.el).getPropertyValue('z-index')
     zIndex = Number.isNaN(zIndex) ? 1 : zIndex
-    Drap.zIndex = Drap.zIndex > zIndex ? Number(Drap.zIndex) + 1 : Number(zIndex) + 1
+    this.zIndex = this.zIndex > zIndex ? Number(this.zIndex) + 1 : Number(zIndex) + 1
     this.setEleStyle({
-      zIndex: Drap.zIndex,
+      zIndex: this.zIndex,
       position: 'absolute',
       top: this.el.offsetTop + 'px',
       left: this.el.offsetLeft + 'px'
     })
     this.x = e.offsetX
     this.y = e.offsetY
-    this.el.parentNode.onmousemove = (ev) => this.onMouseMove(ev)
-    this.el.parentNode.onmouseup = (ev) => this.onMouseUp(ev)
+    document.onmousemove = (ev) => this.onMouseMove(ev)
+    document.onmouseup = (ev) => this.onMouseUp(ev)
+    this.el.setAttribute('draggable', false)
   }
 
   // 移动move
   onMouseMove (e) {
-    let X = e.offsetX - this.x
-    let Y = e.offsetY - this.y
-    if (e.target !== this.el.parentNode) return
+    const {top, left} = this.el.parentNode.getBoundingClientRect()
+    let X = e.clientX - left - this.x
+    let Y = e.clientY - top - this.y
     if (X < 0) {
       X = 0
     } else if (X > this.el.parentNode.clientWidth - this.el.clientWidth) {
@@ -71,17 +71,13 @@ class Drap {
       right: 'auto',
       bottom: 'auto'
     })
-    this.el.setAttribute('draggable', true)
   }
 
   // 释放
   onMouseUp () {
-    this.el.parentNode.onmousemove = null
-    this.el.parentNode.onmouseup = null
-    this.setEleStyle({
-      pointerEvents: 'auto'
-    })
-    this.el.setAttribute('draggable', false)
+    document.onmousemove = null
+    document.onmouseup = null
+    this.el.setAttribute('draggable', true)
     if (this.el.setCapture) this.el.setCapture()
   }
 }

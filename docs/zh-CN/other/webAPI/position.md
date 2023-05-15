@@ -3,13 +3,19 @@ title: 获取页面元素位置
 lang: zh-CN
 ---
 # element
+
+:::demo
+
+other/webAPI/position/drap
+
+:::
 <ElRow>
-  <img src="/images/html/position/position.jpg" style="height: 400px;"/>
+  <img src="/images/webAPI/position/position.jpg" style="height: 400px;"/>
 </ElRow>
 
 ## client
 <ElRow>
-  <img src="/images/html/position/client.jpg" style="height: 300px;"/>
+  <img src="/images/webAPI/position/client.jpg" style="height: 300px;"/>
 </ElRow>
 
 |  属性   | 描述              |
@@ -20,8 +26,9 @@ lang: zh-CN
 | clientLeft | 元素左边框的宽度 |
 
 ## offset
+> offsetLeft值跟offsetTop值的获取跟父级元素没关系，而是跟其上一级的定位元素(除position:static;外的所有定位如fixed,relative,absolute)有关系。
 <ElRow>
-  <img src="/images/html/position/offset.jpg" style="height: 300px;"/>
+  <img src="/images/webAPI/position/offset.jpg" style="height: 300px;"/>
 </ElRow>
 
 |  属性   | 描述              |
@@ -33,7 +40,7 @@ lang: zh-CN
 
 ## scroll
 <ElRow>
-  <img src="/images/html/position/scroll.jpg" style="height: 300px;"/>
+  <img src="/images/webAPI/position/scroll.jpg" style="height: 300px;"/>
 </ElRow>
 
 |  属性   | 描述              |
@@ -43,10 +50,3 @@ lang: zh-CN
 | scrollTop | 上下滚动条滚动的距离（可以设置） |
 | scrollLeft | 左右滚动条滚动的距离（可以设置） |
 
-## 应用
-
-:::demo 拖拽
-
-other/html/element_possition/drap
-
-:::

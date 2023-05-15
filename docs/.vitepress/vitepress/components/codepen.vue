@@ -17,12 +17,15 @@ const props = withDefaults(defineProps<{
   html?: string,
   css?: string,
   javascript?: string,
+  height: number,
 }>(), {
+  height: 300
 })
 const {
   html: initHtmlTxt,
   css: initCss,
   javascript: initJs,
+  height,
 } = toRefs(props);
 const htmlTxt = ref(initHtmlTxt.value);
 const cssTxt = ref(initCss.value);
@@ -39,7 +42,7 @@ const jsTxt = ref(initJs.value);
             <Codemirror
               v-model="htmlTxt"
               v-bind="BASE"
-              :style="{ height: '300px' }"
+              :style="{ height: `${height}px` }"
               :extensions="[html(), oneDark]"
             />
           </el-tab-pane>
@@ -47,7 +50,7 @@ const jsTxt = ref(initJs.value);
             <Codemirror
               v-model="cssTxt"
               v-bind="BASE"
-              :style="{ height: '300px' }"
+              :style="{ height: `${height}px` }"
               :extensions="[css(), oneDark]"
             />
           </el-tab-pane>
@@ -55,12 +58,13 @@ const jsTxt = ref(initJs.value);
              <Codemirror
               v-model="jsTxt"
               v-bind="BASE"
-              :style="{ height: '300px' }"
+              :style="{ height: `${height}px` }"
               :extensions="[javascript(), oneDark]"
             />
           </el-tab-pane>
         </el-tabs>
-        <iframe 
+        <iframe
+          :height="height"
           :srcdoc="`<!doctype html>
     <html>
       <head>
@@ -73,7 +77,7 @@ const jsTxt = ref(initJs.value);
         ${ jsTxt }
       </script>
     </html>`" 
-          sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-scripts allow-top-navigation-by-user-activation"
+          sandbox="allow-modals allow-pointer-lock allow-popups allow-scripts allow-top-navigation-by-user-activation"
         ></iframe>
       </div>
     </div>
@@ -92,7 +96,6 @@ const jsTxt = ref(initJs.value);
 }
 iframe {
   width: 100%;
-  height: 300px;
   border: 1px solid #ccc;
 }
 .el-icon {

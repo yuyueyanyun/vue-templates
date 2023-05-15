@@ -7,7 +7,7 @@ lang: zh-CN
 ## 安装
 ### Windows 平台上安装
 >下载地址：https://git-scm.com/
-```code
+```
 git config --global user.name "Your Name"
 git config --global user.email "email"
 ```
@@ -15,37 +15,37 @@ git config --global user.email "email"
 如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 --global 选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。
 ## 创建版本库
 ### git init
-```code
+```
 git init
 ```
 执行完后会在当前目录生成一个 .git 目录。
-```code
+```
 git init newrepo
 ```
 初始化后，会在 newrepo 目录下会出现一个名为 .git 的目录。
 ### git clone
-```code
+```
 git clone <repo>
 ```
 从现有 Git 仓库中拷贝项目
 ## 分支管理：branch
 ### 创建分支
-```code
+```
 git branch (branchname)   创建分支
 git checkout (branchname) 切换分支
 ```
 git branch 没有参数时，会列出你在本地的分支。
-```code
+```
 git checkout -b (branchname) origin/master
 ```
 master 分支为基准，创建新分支并立即切换到该分支下
 ###删除分支
 删除本地分支
-```code
+```
 git branch -d (branchname)
 ```
 删除远程分支
-```code
+```
 git push origin --delete (branchname)
 git push origin :(branchname)  //推送空分支到远程,删除远程分支另一种实现
 ```
@@ -53,7 +53,7 @@ git push origin :(branchname)  //推送空分支到远程,删除远程分支另�
 ## 暂时保存：stash 
 暂时保存没有提交的工作。运行该命令后，所有没有commit的代码，都会暂时从工作区移除，回到上次commit时的状态。
 >解决任务切换问题。如正在进行项目中某一部分的工作，这是又要转到其他分支上进行一些工作。
-```code
+```
 // 暂时保存没有提交的工作
 git stash
 // 实际应用中推荐给每个stash加一个message，用于记录版本，使用git stash save
@@ -72,26 +72,26 @@ git stash clear
 ```
 ## pull
 以 rebase 的方式拉取远端 origin 的 release/xxxxxx 的代码
-```code
+```
 git pull --rebase origin release/xxxxxx
 ```
 ## add
 
 * 添加当前目录的所有变更
-```code
+```
 git add .
 ```
 * 或者添加指定的文件
-```code
+```
 git add ./src/views
 ```
 ## commit
 
-```code
+```
 git commit -m "<type>(scope): <subject>""
 ```
 或者把内容提交至上一个 commit-id 里面
-```code
+```
 git commit --amend
 ```
 | 属性 | 说明 | 必须 |
@@ -101,48 +101,48 @@ git commit --amend
 | subject | 简短描述 | true |
 ## push
 * 推送至远端并关联
-```code
+```
 git push --set-upstream origin feature/xxxxxx
 ```
 * 直接推送
-```code
+```
 git push
 ```
 * 强制覆盖**慎用**
-```code
+```
 git push -f
 ```
 ## cherry-pick
-```code
+```
 git cherry-pick <commitHash>
 ```
 将指定的提交commitHash，应用于当前分支。
 ## merge、cherry-pick、rebase
 * 放弃操作，回到操作前的样子。
-```code
+```
 --abort 
 ```
 * 退出操作，但是不回到操作前的样子。
-```code
+```
 --quit 
 ```
 * 解决代码冲突后，将修改的文件重新加入暂存区（git add .）执行以下命令继续操作
-```code
+```
 --continue
 ```
 ## 多ssh-key
 >我们在日常工作中会遇到公司有个 gitlab，还有些自己的一些项目放在 github 上。这样就导致我们要配置不同的 ssh-key 对应不同的环境。
 * 生成私钥
-```code
+```
 ssh-keygen -t rsa -C 'youremail@yourcompany.com'
 ```
-```code
+```
 ssh-keygen -t rsa -C 'youremail@your.com'
 ```
 * 添加私钥
 1. `ssh-add -l` 来确私钥列表
 2. `ssh-add -D` 来清空私钥列表
-```code
+```
 ssh-add ~/.ssh/id_rsa
 ```
 如果执行 ssh-add 时提示 "Could not open a connection to your authentication agent"，可执行一下命令后再执行`ssh-add`
