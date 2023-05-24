@@ -96,6 +96,10 @@ export default {
           text: 'print：打印', 
           link: '/zh-CN/other/webAPI/print',
         },
+        {
+          text: 'storage：储存',
+          link: '/zh-CN/other/webAPI/storage',
+        }
       ]
     },
     {
@@ -150,6 +154,10 @@ export default {
         { 
           text: 'printjs', 
           link: '/zh-CN/other/tutorial/printjs',
+        },
+        { 
+          text: 'typescript', 
+          link: '/zh-CN/other/tutorial/ts',
         },
       ]
     },

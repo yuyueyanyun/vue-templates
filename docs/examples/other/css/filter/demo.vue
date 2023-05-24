@@ -10,6 +10,7 @@ enum Config  {
   DRAP_SHADOW= 'drop-shadow(16px 16px 20px red) invert(75%)',
   SEPIA='sepia(100%)'
 }
+
 type key = keyof typeof  Config
 let selectConfig = ref<key[]>([]);
 

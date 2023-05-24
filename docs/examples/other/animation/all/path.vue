@@ -3,7 +3,7 @@
       <svg>
         <path id="path1" :d="airLine" fill="none" stroke="blue" stroke-width="1"  />
         <image 
-          xlink:href="/public/images/air.png" 
+          xlink:href="/images/air.png" 
           x="0" y="0" 
           :height="airSize" 
           :width="airSize"

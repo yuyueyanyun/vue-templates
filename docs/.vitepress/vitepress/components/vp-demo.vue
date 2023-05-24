@@ -4,6 +4,8 @@ import { isClient, useClipboard, useToggle } from '@vueuse/core'
 import { CaretTop } from '@element-plus/icons-vue'
 import Example from './demo/vp-example.vue'
 import SourceCode from './demo/vp-source-code.vue'
+import { usePlayground } from "../use-playground"
+import Worker from '../codepenWorker'
 
 const props = defineProps<{
   demos: object
@@ -14,6 +16,7 @@ const props = defineProps<{
 }>()
 
 const vm = getCurrentInstance()!
+const myWorker = Worker();
 
 const { copy, isSupported } = useClipboard({
   source: decodeURIComponent(props.rawSource),
@@ -24,7 +27,6 @@ const [sourceVisible, toggleSourceVisible] = useToggle()
 
 const formatPathDemos = computed(() => {
   const demos = {}
-  console.log(props.demos)
   Object.keys(props.demos).forEach((key) => {
     demos[key.replace('../../../examples/', '').replace('.vue', '')] =
       props.demos[key].default
@@ -37,6 +39,12 @@ const decodedDescription = computed(() =>
 
 const onPlaygroundClick = () => {
   if (!isClient) return
+  const { encoded } = usePlayground(props.rawSource);
+  window.open('../../page/codepen.html');
+  myWorker.port.postMessage({
+    type: 'send',
+    message: encoded,
+  })
 }
 
 const copyCode = async () => {

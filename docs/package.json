@@ -21,6 +21,7 @@
     "@codemirror/theme-one-dark": "^6.1.2",
     "@element-plus/icons-vue": "^2.1.0",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "@vue/repl": "^1.4.1",
     "element-plus": "^2.3.4",
     "escape-html": "^1.0.3",
     "markdown-it": "^13.0.1",

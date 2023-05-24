@@ -1,6 +1,7 @@
 <template>
   <Suspense>
     <lq-codepen
+      active="js"
       :html="htmlTxt"
       :javascript="code"
    />

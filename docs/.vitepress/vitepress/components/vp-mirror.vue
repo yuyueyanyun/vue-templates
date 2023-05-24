@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance } from 'vue'
 import Example from './demo/vp-example.vue'
-import SourceCode from './demo/vp-source-code.vue'
 
 const props = defineProps<{
   demos: object

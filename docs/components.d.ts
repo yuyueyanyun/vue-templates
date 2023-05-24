@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     IRiFlaskLine: typeof import('~icons/ri/flask-line')['default']
     IRiGithubLine: typeof import('~icons/ri/github-line')['default']
     Layout: typeof import('./.vitepress/vitepress/components/layout.vue')['default']
+    VpCodepen: typeof import('./.vitepress/vitepress/components/vp-codepen.vue')['default']
     VpDemo: typeof import('./.vitepress/vitepress/components/vp-demo.vue')['default']
     VpExample: typeof import('./.vitepress/vitepress/components/demo/vp-example.vue')['default']
     VpMirror: typeof import('./.vitepress/vitepress/components/vp-mirror.vue')['default']

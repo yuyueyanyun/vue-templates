@@ -1,6 +1,7 @@
 ---
 title: svg
 lang: zh-CN
+outline: deep
 ---
 
 # svg
@@ -13,7 +14,6 @@ lang: zh-CN
 >SVG 文件推荐使用 .svg（全部小写）作为此类文件的扩展名。
 
 ## 元素
-[矩形](#rect-矩形) [圆形](#circle-圆形) [椭圆](#ellipse-椭圆) [直线](#line-直线) [多边形](#polygon-多边形) [折线](#polyline-折线) [路径](#path-路径) [文本](#text-文本)
 ### rect: 矩形
 
 :::mirror

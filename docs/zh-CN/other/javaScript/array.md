@@ -4,7 +4,7 @@ lang: zh-CN
 ---
 
 # 数组
-## 字符串排序
+## sort 排序
 
 :::mirror
 

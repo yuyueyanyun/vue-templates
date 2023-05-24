@@ -6,15 +6,18 @@ vue可配置模板
 
 ```shell
 npm install
-```
-
-启动文档本地调试
-
-```shell
 npm run docs:dev
 ```
+
 下载模板
 
 ```shell
-npm run lib
+npm init @yuyueyanyun/template@latest
+```
+
+发布模板
+
+```shell
+cd packages
+npm run publist:templates
 ```

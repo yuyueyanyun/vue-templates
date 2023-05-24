@@ -112,11 +112,57 @@ git push
 ```
 git push -f
 ```
-## cherry-pick
+* 安全的强制推送
+> 使用此参数推送，如果远端有其他人推送了新的提交，那么推送将被拒绝，这种拒绝和没有加 --force 参数时的拒绝是一样的。
+```
+git push --force-with-lease
+```
+## log 查看记录
+
+```
+git log
+git log [--oneline | --graph ]
+```
+| 参数 | 说明  |
+| -- | ------  |
+| --oneline | 查看历史记录的简洁的版本。|
+| --graph | 查看历史中什么时候出现了分支、合并。以下为相同的命令，开启了拓扑图 |
+
+
+## reset 回退
+
+```
+git reset [--soft | --mixed | --hard] [HEAD]
+git reset HEAD^            # 回退所有内容到上一个版本 
+git reset 052e             # 回退到指定版本
+git reset origin/master    # 将本地的状态回退到和远程的一样
+```
+| 参数 | 说明  |
+| -- | ------  |
+| --mixed | 默认，重置暂存区的文件与上一次的提交(commit)保持一致，工作区文件内容保持不变。|
+| --soft | 保留工作目录和暂存区中的内容，并把重置 HEAD 所带来的新的差异放进暂存区。|
+| --hard | 参数撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本，并删除之前的所有提交信息 |
+
+## revert 回滚
+> 是通过额外创建一次提交，来取消分支上指定的某次提交的方式，来实现版本回退的。
+
+```
+git revert HEAD   #撤销前一次提交
+git revert [HEAD]
+```
+
+## cherry-pick 遴选
 ```
 git cherry-pick <commitHash>
 ```
 将指定的提交commitHash，应用于当前分支。
+
+## rebase 变基
+```
+# -i 打开变基的交互模式
+git rebase -i [HEAD]  # 修改编辑commit
+git rebase master  # 分支历史看起来像没有经过任何合并一样
+```
 ## merge、cherry-pick、rebase
 * 放弃操作，回到操作前的样子。
 ```

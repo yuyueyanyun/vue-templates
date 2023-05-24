@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import imgHref from '/public/images/air.png'
+import imgHref from '/images/air.png'
 
 const htmlTxt = ref(`<svg viewBox="0, 0, 300, 200">
   <path id="path1" d="M 10 180 Q 102 72 290 20" fill="none" stroke="blue" stroke-width="1"  />
