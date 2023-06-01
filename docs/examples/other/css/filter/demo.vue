@@ -14,7 +14,7 @@ enum Config  {
 type key = keyof typeof  Config
 let selectConfig = ref<key[]>([]);
 
-const imgRef = ref<HTMLInputElement | null>(null)
+const imgRef = ref<HTMLImageElement | null>(null)
 const handleSetStyle = (val: key):void => {
   if(selectConfig.value.includes(val)) {
     selectConfig.value = selectConfig.value.filter((item) => item !== val )
@@ -38,34 +38,34 @@ const handleSetStyle = (val: key):void => {
       >{{ val }}</div>
     </div>
     <div class="rigth">
-      <img ref="imgRef" src="/public/icon/firefox-logo.svg" alt="火狐">
+      <img ref="imgRef" src="https://raw.githubusercontent.com/yuyueyanyun/vue-templates/main/docs/public/icon/firefox-logo.svg" alt="火狐">
     </div>
   </div>
 </template>
-<style scoped lang="scss">
+<style scoped>
 .box {
   height: 220px;
   display: flex;
   column-gap: 8px;
-  .left {
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
-    overflow: auto;
-    div {
-      cursor: pointer;
-      padding: 0 4px;
-      border: 1px solid #ccc;
-      &.active {
-        border-color: aqua;
-      }
-    }
-  }
-  .rigth {
-    margin: 0 auto;
-  }
-  img {
-    height: 100%;
-  }
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  overflow: auto;
+}
+.left  div {
+  cursor: pointer;
+  padding: 0 4px;
+  border: 1px solid #ccc;
+}
+.left  div.active {
+  border-color: aqua;
+}
+.rigth {
+  margin: 0 auto;
+}
+img {
+  height: 100%;
 }
 </style>

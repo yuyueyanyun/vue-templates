@@ -1,10 +1,10 @@
 <template>
- <div>
+  <div>
     <button class="btn1">Click</button>
     <button class="btn2">Click</button>
     <button class="btn3">Click</button>
     <button class="btn4">Click</button>
- </div>
+  </div>
 </template>
 <style scoped>
 div {
@@ -30,7 +30,7 @@ button {
 .btn1:hover,
 .btn1:focus {
   outline-offset: 2px;
-}
+} 
 
 .btn2 {
   color: var(--color);

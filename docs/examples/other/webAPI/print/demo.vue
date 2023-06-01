@@ -22,11 +22,15 @@ onUnmounted(() => {
 </script>
 <template>
   <div class="box">
-    <el-button size="small" type="primary"  @click="handlePrint">打印</el-button>    
-    <iframe ref="iframePrint" src="./"></iframe>
+    <button type="button"  @click="handlePrint">打印</button>    
+    <iframe ref="iframePrint" src="../../"></iframe>
   </div>
 </template>
-<style scoped lang="scss">
+<style scoped>
+button {
+  padding: 4px 8px;
+  border: 1px solid #409eff;
+}
 iframe {
   width: 100%;
   height: 300px;

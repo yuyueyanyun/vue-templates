@@ -4,7 +4,6 @@ lang: zh-CN
 ---
 
 # 存储
-
 ## localStorage sessionStorage
 > 键值对总是以字符串的形式存储。 (需要注意，和 js 对象相比，键值对总是以字符串的形式存储意味着数值类型会自动转化为字符串类型)。存储大小为5MB，都保存在客户端，不与服务器进行交互通信，有相同的Web API
 
@@ -26,6 +25,10 @@ sessionStorage.clear();
 
 ## indexedDB
 > 用于在客户端存储大量的结构化数据。执行的操作是异步执行。
+
+:::demo
+other/webAPI/storage/indexedDB
+:::
 
 1、打开数据库
 * 如果数据库不存在，open 操作会创建该数据库，然后 onupgradeneeded 事件被触发，你需要在该事件的处理函数中创建数据库模式。
@@ -139,8 +142,3 @@ request.onerror = () => {
 ```javascript
 db.close();
 ```
-
-## 示例
-:::demo
-other/webAPI/storage/indexedDB
-:::

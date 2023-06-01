@@ -14,9 +14,14 @@ export default {
       text: 'html',
       items: [
         {
+          text: '语义化布局', 
+          link: '/zh-CN/other/html/semantization',
+        },
+        {
           text: '标签', 
           items: [
             { text: 'iframe', link: '/zh-CN/other/html/iframe', },
+            { text: 'canvas', link: '/zh-CN/other/html/canvas', },
             { text: 'svg', link: '/zh-CN/other/html/svg', },
           ] 
         },
@@ -78,6 +83,14 @@ export default {
             { text: '反射：Reflection', link: '/zh-CN/other/javaScript/reflection', },
             { text: '键的集合对象', link: '/zh-CN/other/javaScript/keyedCollections', },
           ] 
+        },
+        { 
+          text: '宏任务和微任务', 
+          link: '/zh-CN/other/javaScript/task',
+        },
+        {
+          text: '算法', 
+          link: '/zh-CN/other/javaScript/algorithm',
         }
       ]
     },
@@ -99,19 +112,27 @@ export default {
         {
           text: 'storage：储存',
           link: '/zh-CN/other/webAPI/storage',
-        }
+        },
+        {
+          text: 'canvas_API',
+          link: '/zh-CN/other/webAPI/canvas',
+        },
+        {
+          text: 'requestAnimationFrame',
+          link: '/zh-CN/other/webAPI/requestAnimationFrame',
+        },
       ]
     },
     {
-      text: '动画',
-      link: '/zh-CN/other/animation/all',
+      text: 'http',
+      link: '/zh-CN/other/http/index',
     },
     {
-      text: 'http',
+      text:  "视觉设计",
       items: [
-        { 
-          text: '请求头', 
-          link: '/zh-CN/other/http/header'
+        {
+          text: '动画',
+          link: '/zh-CN/other/visual_design/animation',
         },
       ]
     },
@@ -158,6 +179,10 @@ export default {
         { 
           text: 'typescript', 
           link: '/zh-CN/other/tutorial/ts',
+        },
+        { 
+          text: 'trackingjs', 
+          link: '/zh-CN/other/tutorial/trackingjs',
         },
       ]
     },

@@ -6,7 +6,7 @@ lang: zh-CN
 # mask：掩膜
 允许使用者通过遮罩或者裁切特定区域的图片的方式来隐藏一个元素的部分或者全部可见区域。
 
-:::mirror
+:::demo
 
 other/css/mask/demo
 

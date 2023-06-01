@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, unref, onUnmounted } from 'vue';
-import type { FormInstance, FormRules } from 'element-plus'
+import { ref, onUnmounted } from 'vue';
 
 type stConfig = {
   name: string,
@@ -61,6 +60,7 @@ class IndexedDB {
   }
 
   async add(data: object):Promise<Event>  {
+
     return new Promise(async(resolve, reject) => {
       const objectStore = await this.begintStore('readwrite')
       const request = objectStore.add(data)
@@ -118,28 +118,21 @@ class IndexedDB {
     this.DB?.close()
   }
 }
-const COLUMNS = [
-  { prop: "id", label: "主键" },
-  { prop: "createIndex", label: "索引" },
-  { prop: "name", label: "name" }
-]
+
 type Rows = {
   id?: number | string,
   createIndex?: string,
   name?: string,
 }
-const formEl = ref<FormInstance | null>(null)
+type propType = 'id'|'createIndex'|'name'
+
+const COLUMNS = [
+  { prop: "id", label: "主键" },
+  { prop: "createIndex", label: "索引" },
+  { prop: "name", label: "name" }
+]
 const tableData = ref<Rows[]>([]);
-const dialogFormVisible = ref(false);
-const form = ref<Rows>({});
-const rules = reactive<FormRules>({
-  createIndex: { required: true, message: '请输入', trigger: 'blur' },
-});
-const handleClose = () => {
-  dialogFormVisible.value = false;
-  form.value = {};
-  formEl.value?.resetFields()
-}
+
 const myDB = new IndexedDB('myDB', 1, {
   name: 'storg',
   keyPath: {
@@ -153,36 +146,33 @@ const myDB = new IndexedDB('myDB', 1, {
 const getData = async ():Promise<void> => {
   tableData.value = await myDB.get();
 }
-
-const handleEdit = async(row: Rows):Promise<void> => {
-  form.value = {
-    ...row
-  };
-  dialogFormVisible.value = true;
+const handleAdd = async () => {
+  var person= prompt("请输入索引值","");
+  if(person) {
+    await myDB.add({
+      createIndex: person,
+    });
+    getData();
+  }
+}
+const handleEdit = async(prop:propType ,row: Rows):Promise<void> => {
+  if(prop === 'id') return
+  const {id, createIndex,  name} = row
+  var person= prompt("请输入", row[prop]);
+  if(person) {
+    await myDB.put({
+      id,
+      createIndex,
+      name,
+      [prop]: person,
+    });
+    getData();
+  }
 }
 const handleDel = async(row: Rows):Promise<void> => {
   if(!row.id) return
   await myDB.delete(row.id);
   getData();
-}
-
-const handleConfirm = async():Promise<void> => {
-  await formEl.value?.validate();
-  const {createIndex, name, id } = unref(form);
-  if(id) {
-    await myDB.put({
-      id,
-      createIndex,
-      name,
-    });
-  } else {
-    await myDB.add({
-      createIndex,
-      name,
-    });
-  }
-  getData();
-  dialogFormVisible.value = false
 }
 
 getData();
@@ -191,46 +181,52 @@ onUnmounted(() => {
 })
 </script>
 <template>
-  <el-button type="primary" size="small"  @click="dialogFormVisible = true">新增</el-button>
-  <el-table :data="tableData" style="width: 100%">
-    <el-table-column 
-      v-for="item in COLUMNS" 
-      :key="item.prop"
-      :prop="item.prop" 
-      :label="item.label" 
-     />
-     <el-table-column  label="操作"  fixed="right" >
-      <template #default="{row}">
-        <el-button link type="primary" size="small" @click="handleEdit(row)">
-          编辑
-        </el-button>
-        <el-button link type="primary" size="small"  @click="handleDel(row)">删除</el-button>
-      </template>
-     </el-table-column>
-  </el-table>
-  <el-dialog v-model="dialogFormVisible" title="新增/编辑" @close="handleClose">
-    <el-form
-      ref="formEl"
-      :model="form"
-      label-width="80px"
-      :rules="rules"
-    >
-      <el-form-item label="索引" prop="createIndex">
-        <el-input v-model.trim="form.createIndex" />
-      </el-form-item>
-      <el-form-item label="name" prop="name">
-        <el-input v-model.trim="form.name" />
-      </el-form-item>
-    </el-form>
-    <template #footer>
-      <el-button type="primary" @click="handleConfirm">
-        确认
-      </el-button>
-    </template>
-  </el-dialog>
+  <button type="button"  @click="handleAdd">新增</button>
+  <table style="width: 100%">
+    <tr>
+      <th v-for="item in COLUMNS" :key="item.prop">
+      {{ item.label }}
+      </th>
+      <th>操作</th>
+    </tr>
+    
+    <tr v-for="(row, index) in tableData" :key="index">
+      <td 
+        v-for="item in COLUMNS"
+        :key="item.prop" 
+        @click="handleEdit(item.prop as propType, row)"
+        :class="[{ 'click_td': item.prop !== 'id' }]"
+      >
+        {{ row[item.prop as propType] }}
+      </td>
+      <td>
+        <button type="button" @click="handleDel(row)">删除</button>
+      </td>
+    </tr>
+  </table>
 </template>
-<style scoped lang="scss">
-.el-table :deep(table){
-  margin: 0;
+<style scoped>
+@property --base_color {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #79bbff;
+}
+table {
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid rgba(60, 60, 68, 0.12);
+  padding: 8px 16px;
+}
+
+button,
+.click_td {
+  color: var(--base_color);
+  cursor: pointer; 
+}
+
+.click_td:hover {
+  color: #fff;
+  background-color: var(--base_color);
 }
 </style>

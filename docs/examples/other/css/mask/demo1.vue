@@ -1,13 +1,23 @@
 <template>
+  <Suspense>
+    <lq-codepen 
+      :html="htmlTxt"
+      :css="cssTxt"
+    />
+  </Suspense>
+</template>
+<script setup lang="ts">
+import imgSrc from "/public/images/css/mask_img.jpg"
+import my from '/public/images/css/mask_src.png'
+const htmlTxt = `
 <div class="box">
-  <img src="https://raw.githubusercontent.com/yuyueyanyun/vue-templates/main/docs/public/images/css/mask_img.jpg"/>
+  <img src="${imgSrc}"/>
   <div class="mask">
     <p>元芳，你怎么看</p>
     <p>看看我的生活，希望您多一些快乐陌生人</p> 
   </div>
-</div>
-</template>
-<style scoped>
+</div>`
+const cssTxt = `
 @keyframes roll {
   0% {
     left: 100%;
@@ -17,7 +27,7 @@
     left: 0;
   }
 }
-.box {   
+.box {
   position: relative;
   width: fit-content;
 }
@@ -31,7 +41,7 @@ img {
   overflow: hidden;
   width: 100%;
   height: 100%;
-  -webkit-mask-image: url('https://raw.githubusercontent.com/yuyueyanyun/vue-templates/main/docs/public/images/css/mask_src.png');
+  -webkit-mask-image: url('${my}');
   -webkit-mask-size: auto 100%;
   -webkit-mask-repeat: no-repeat;
 }
@@ -42,15 +52,18 @@ p {
   color: #fff;
   background-color: rgba(167, 167, 167, 0.5);
   white-space: nowrap;
-}
-p:first-of-type {
-  top: 60%;
-  left: 100%;
-  animation: roll 6s linear 0s infinite;
-}
-p:last-of-type {
-  top: 46%;
-  left: 100%;
-  animation: roll 6s linear 0.5s infinite;
-}
+  &:first-of-type {
+    top: 60%;
+    left: 100%;
+    animation: roll 6s linear 0s infinite;
+  }
+  &:last-of-type {
+    top: 46%;
+    left: 100%;
+    animation: roll 6s linear 0.5s infinite;
+  }
+}`
+</script>
+<style scoped lang="scss">
+
 </style>
