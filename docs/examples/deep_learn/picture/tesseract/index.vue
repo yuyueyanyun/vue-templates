@@ -1,38 +1,37 @@
 <script setup lang="ts">
 import {ref} from 'vue'
-import { createWorker } from 'tesseract.js';
+// import { createWorker } from 'tesseract.js';
 
 const imgEl = ref<HTMLImageElement | null>(null)
-let worker:Tesseract.Worker|null = null;
+// let worker:Tesseract.Worker|null = null;
 
-(async() => {
-  worker = await createWorker({
-    logger: m => console.log(m)
-  });
-  console.log(worker)
-})();
+// (async() => {
+//   worker = await createWorker({
+//     logger: m => console.log(m)
+//   });
+//   console.log(worker)
+// })();
 
 
-const setText = async(url:string) => {
-  console.log(worker)
-  if(!worker) return
-  await worker.load();
-  await worker.loadLanguage('eng');
-  await worker.initialize('eng');
-  const { data: { text } } = await worker.recognize(url);
-  console.log(text);
-  await worker.terminate();
-}
+// const setText = async(url:string) => {
+//   if(!worker) return
+//   await worker.load();
+//   await worker.loadLanguage('eng');
+//   await worker.initialize('eng');
+//   const { data: { text } } = await worker.recognize(url);
+//   console.log(text);
+//   await worker.terminate();
+// }
 const handleChangeFile = (e:Event) => {
-  const file =(<HTMLInputElement>e.target).files?.[0];
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    if(imgEl.value && e.target) {
-      imgEl.value.src = e.target.result as string;
-      setText(imgEl.value.src)
-    }
-  };
-  file && reader.readAsDataURL(file);
+  // const file =(<HTMLInputElement>e.target).files?.[0];
+  // const reader = new FileReader();
+  // reader.onload = (e) => {
+  //   if(imgEl.value && e.target) {
+  //     imgEl.value.src = e.target.result as string;
+  //     setText(imgEl.value.src)
+  //   }
+  // };
+  // file && reader.readAsDataURL(file);
 }
 </script>
 <template>

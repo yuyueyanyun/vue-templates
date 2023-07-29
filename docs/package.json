@@ -29,7 +29,6 @@
     "normalize.css": "^8.0.1",
     "prismjs": "^1.29.0",
     "stats.js": "^0.17.0",
-    "tesseract.js": "^4.1.1",
     "three": "^0.151.3",
     "vue-codemirror": "^6.1.1"
   },
