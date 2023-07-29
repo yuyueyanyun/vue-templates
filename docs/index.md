@@ -7,9 +7,6 @@ hero:
   name: yuyue
   text: 快速搭建
   tagline: vue项目
-  image:
-    src: /logo.png
-    alt: logo
   actions:
     - theme: brand
       text: Get Started

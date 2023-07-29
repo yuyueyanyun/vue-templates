@@ -13,6 +13,7 @@
     // "noImplicitAny": false,
     "paths": {
       "~/*": ["./.vitepress/vitepress/*"],
+      "@/": ["./*"],
       // "vue": ["./node_modules/vue/macros.d.ts"]
     },
   },

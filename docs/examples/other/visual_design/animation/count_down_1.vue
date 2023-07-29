@@ -131,7 +131,6 @@ const addBall = (x:number, y:number, n:string) => {
   }
 };
 const renderBall = (cxt: CanvasRenderingContext2D, w: number, h: number) => {
-  console.log(storeBall.length)
   for(let i = 0, l = storeBall.length; i < l; i += 1) {
     if(storeBall[i].x + storeBall[i].radius < 0 || storeBall[i].x - storeBall[i].radius > w ) {
       storeBall.splice(i, 1);

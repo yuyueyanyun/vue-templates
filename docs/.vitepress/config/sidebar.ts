@@ -9,6 +9,9 @@ export default {
       ]
     }
   ],
+  '/zh-CN/deep_learn/': [
+    { text: '识别图片文字', link: '/zh-CN/deep_learn/picture/tesseract' },
+  ],
   '/zh-CN/other/': [
     {
       text: 'html',
@@ -184,6 +187,14 @@ export default {
           text: 'trackingjs', 
           link: '/zh-CN/other/tutorial/trackingjs',
         },
+        { 
+          text: 'browser', 
+          link: '/zh-CN/other/tutorial/browser'
+        },
+        {
+          text: 'GrapesJs',
+          link: '/zh-CN/other/tutorial/GrapesJs'
+        }
       ]
     },
     {
