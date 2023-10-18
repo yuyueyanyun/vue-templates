@@ -1,10 +1,12 @@
 import path from 'path'
 import { defineConfig } from 'vite'
 // import VueMacros from 'unplugin-vue-macros/vite'
-// import vueJsx from '@vitejs/plugin-vue-jsx'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
+import { SearchPlugin } from "vitepress-plugin-search";
+import flexSearchIndexOptions from "flexsearch";
 
 import {
   projRoot,
@@ -24,6 +26,13 @@ const alias: Alias[] = [
   },
 ]
 
+const options = {
+  ...flexSearchIndexOptions,
+  previewLength: 100, //搜索结果预览长度
+  buttonLabel: "搜索",
+  placeholder: "情输入关键词",
+};
+
 export default defineConfig(async ({ mode }) => {
   return {
     server: {
@@ -36,6 +45,7 @@ export default defineConfig(async ({ mode }) => {
       alias,
     },
     plugins: [
+      vueJsx(),
       // VueMacros({
       //   setupComponent: false,
       //   setupSFC: false,
@@ -61,6 +71,7 @@ export default defineConfig(async ({ mode }) => {
         autoInstall: true,
       }),
       MarkdownTransform(),
+      SearchPlugin(options),
     ],
     
     optimizeDeps: {

@@ -9,9 +9,26 @@ outline: deep
 
 ## transition
 ### [transform](../css/transform.md)
+**rotateX**
+> 下拉高度不定可用
 :::demo
 
 other/visual_design/animation/transform
+
+:::
+**translate**
+
+> 此处使用[ResizeObserver](../webAPI/ResizeObserver.md) 监听元素尺寸变化，更新箭头位置。
+:::demo
+
+other/visual_design/animation/translateX
+
+:::
+
+* 加入购物车
+:::demo
+
+other/visual_design/animation/translateFly
 
 :::
 ### [outline](../css/outline.md)
@@ -36,8 +53,7 @@ other/visual_design/animation/mix_blend_mode
 
 :::
 
-### filter
-* [filter](../css/filter.md)
+## [filter](../css/filter.md)
 :::demo 
 
 other/visual_design/animation/filter_css

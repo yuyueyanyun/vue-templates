@@ -8,6 +8,10 @@ lang: zh-CN
 
 ```css
 outline: outline-width outline-style outline-color;
+/* 全局值 */
+outline: inherit;
+outline: initial;
+outline: unset;
 ```
 :::demo
 

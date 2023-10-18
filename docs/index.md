@@ -6,7 +6,7 @@ lang: zh-CN
 hero:
   name: yuyue
   text: 快速搭建
-  tagline: vue项目
+  tagline: vue、react项目
   actions:
     - theme: brand
       text: Get Started
@@ -21,5 +21,5 @@ features:
   details: 一天一道算法题。
 - title: 生活点点滴滴
   details: 记录生活中美好的时刻。
-footer: MIT Licensed | Copyright © 2019-present lei
+footer: MIT Licensed | Copyright © 2023-present lei
 ---

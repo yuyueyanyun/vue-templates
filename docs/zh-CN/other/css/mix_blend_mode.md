@@ -1,10 +1,10 @@
 ---
-title: linear_gradient
+title: mix-blend-mode
 lang: zh-CN
 ---
 
-# 渐变
-> 用于创建一个表示两种或多种颜色线性渐变的图片。
+# 混合模式
+> 描述了元素的内容应该与元素的直系父元素的内容和元素的背景如何混合。
 
 ```css
 mix-blend-mode: normal|multiply|screen|overlay|darken|lighten|color-dodge|color-burn|difference|exclusion|hue|saturation|color|luminosity;

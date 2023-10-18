@@ -2,12 +2,34 @@
 export default {
   '/zh-CN/template/': [
     {
-      text: '基础',
+      text: '模板使用',
       items: [
         { text: '安装', link: '/zh-CN/template/base/installation' },
         { text: '快速开始', link: '/zh-CN/template/base/quickstart' },
       ]
-    }
+    },
+    {
+      text: 'vue',
+      items: [
+        { text: '使用', link: '/zh-CN/template/vue/base'},
+        { text: 'TS', link: '/zh-CN/template/vue/ts'},
+        { text: '插件', link: '/zh-CN/template/vue/plugins'},
+      ]
+    },
+    {
+      text: 'react',
+      items: [
+        { text: '使用', link: '/zh-CN/template/react/base'},
+      ]
+    },
+    {
+      text: '设计原则',
+      link: '/zh-CN/template/principle/component',
+    },
+    {
+      text: '代码注释',
+      link: '/zh-CN/template/principle/annotation',
+    },
   ],
   '/zh-CN/deep_learn/': [
     { text: '识别图片文字', link: '/zh-CN/deep_learn/picture/tesseract' },
@@ -38,6 +60,10 @@ export default {
           link: '/zh-CN/other/css/base',
         },
         {
+          text: '布局',
+          link: '/zh-CN/other/css/CSS_layout'
+        },
+        {
           text: 'outline：轮廓线', 
           link: '/zh-CN/other/css/outline',
         },
@@ -48,6 +74,14 @@ export default {
         {
           text: 'filter：滤镜', 
           link: '/zh-CN/other/css/filter',
+        },
+        {
+          text: 'shadow：阴影',
+          link: '/zh-CN/other/css/shadow',
+        },
+        {
+          text: 'mix_blend_mode：混合', 
+          link: '/zh-CN/other/css/mix_blend_mode',
         },
         {
           text: 'mask：掩膜', 
@@ -105,16 +139,8 @@ export default {
           link: '/zh-CN/other/webAPI/position',
         },
         { 
-          text: 'scroll：滚动', 
-          link: '/zh-CN/other/webAPI/scroll',
-        },
-        { 
           text: 'print：打印', 
           link: '/zh-CN/other/webAPI/print',
-        },
-        {
-          text: 'storage：储存',
-          link: '/zh-CN/other/webAPI/storage',
         },
         {
           text: 'canvas_API',
@@ -123,6 +149,26 @@ export default {
         {
           text: 'requestAnimationFrame',
           link: '/zh-CN/other/webAPI/requestAnimationFrame',
+        },
+        {
+          text: 'ResizeObserver',
+          link: '/zh-CN/other/webAPI/ResizeObserver',
+        },
+        { 
+          text: 'scroll：滚动', 
+          link: '/zh-CN/other/webAPI/scroll',
+        },
+        {
+          text: 'storage：储存',
+          link: '/zh-CN/other/webAPI/storage',
+        },
+        {
+          text: 'EventSource：通信',
+          link: '/zh-CN/other/webAPI/EventSource',
+        },
+        {
+          text: 'Worker：工作线程',
+          link: '/zh-CN/other/webAPI/Worker',
         },
       ]
     },
@@ -136,6 +182,14 @@ export default {
         {
           text: '动画',
           link: '/zh-CN/other/visual_design/animation',
+        },
+        {
+          text: '布局',
+          link: '/zh-CN/other/visual_design/layout',
+        },
+        {
+          text: 'AI',
+          link: '/zh-CN/other/visual_design/AI',
         },
       ]
     },
@@ -186,6 +240,10 @@ export default {
         { 
           text: 'trackingjs', 
           link: '/zh-CN/other/tutorial/trackingjs',
+        },
+        {
+          text: 'tensorflow',
+          link: '/zh-CN/other/tutorial/tensorflow',
         },
         { 
           text: 'browser', 

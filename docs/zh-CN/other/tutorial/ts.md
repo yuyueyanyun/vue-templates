@@ -201,6 +201,7 @@ let output2 = identity(1); // let output2: number
 ```
 * 泛型约束
 ***在函数里使用泛型参数的属性或者方法时，就需要对泛型进行约束***
+
 1、 基本类型
 ```ts
 const identity = <T>(arg: T[]): number => arg.length;
@@ -233,7 +234,34 @@ interface IdentityFn<T> {
   (arg: T): T;
 }
 const identity: IdentityFn<number> = (arg) => arg;
+```
+* 示例
+```ts
+interface FetchPageResp<T> {
+  total: number;
+  records: T[];
+}
 
+interface FetchPage<T, U> {
+  (
+    params: {
+      page: number;
+      size: number;
+    },
+    data: T
+  ): Promise<FetchPageResp<U>>
+}
+export const formRequest:FetchPage<DataType, PageTableRow> = async (
+  params,
+  data,
+) => {
+  const query = Object.entries(params).reduce((prev, [key, val]) => `${prev}${key}=${val}&`, '?');
+  const response = await fetch(`url${query}`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+  return response.json().data;
+};
 ```
 
 ## 关键字
@@ -270,6 +298,94 @@ type Color = {
 type ColorProps = keyof Color; // "red" | "blue"
 ```
 ## 映射类型
+
+### 只读(Readonly)
+> 被 readonly 标记的属性只能在声明时或类的构造函数中赋值，之后将不可改（即只读属性）
+```ts
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P];
+}
+```
+### 只读数组(ReadonlyArray)
+> 只能在数组初始化时为变量赋值，之后数组无法修改
+```ts
+interface ReadonlyArray<T> {
+  /** Iterator of values in the array. */
+  [Symbol.iterator](): IterableIterator<T>;
+
+  /**
+   * Returns an iterable of key, value pairs for every entry in the array
+   */
+  entries(): IterableIterator<[number, T]>;
+
+  /**
+   * Returns an iterable of keys in the array
+   */
+  keys(): IterableIterator<number>;
+
+  /**
+   * Returns an iterable of values in the array
+   */
+  values(): IterableIterator<T>;
+}
+```
+### 可选类型(Partial)
+> 所有属性设置为可选状态
+```ts
+type Partial<T> = {
+  [P in keyof T]?: T[P];
+}
+```
+### 必选类型(Required)
+> 所有属性设置为必选状态
+```ts
+type Required<T> = {
+  [P in keyof T]-?: T[P];
+}
+```
+### 可选类型(Partial)
+> 所有属性设置为可选状态
+```ts
+type Partial<T> = {
+  [P in keyof T]?: T[P];
+}
+```
+### 提取属性(Pick)
+> 提取部分属性，作为新的返回类型。
+```ts
+type Pick<T, K extends keyof T> = {
+  [P in K]: T[P];
+}
+```
+### 排除属性(Omit)
+> 从 `T` 类型中，排除部分属性
+```ts
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+```
+### 摘取类型(Extract)
+> 提取 `T` 中可以赋值给 U 的类型
+```ts
+type Extract<T, U> = T extends U ? T : never;
+```
+* 示例
+```ts
+type T = Extract<"a" | "b", "a" | "c">;  // "a"
+```
+### 排除类型(Exclude)
+> 从 `T` 中剔除可以赋值给 U的类型
+```ts
+type Exclude<T, U> = T extends U ? never : T
+```
+* 示例
+```ts
+type T = Exclude<"a" | "b", "a" | "c">;  // "b"
+```
+### 属性映射(Record)
+```ts
+type Record<K extends string | number | symbol, T> = {
+  [P in K]: T;
+}
+```
 ### 实例类型(InstanceType)
 > 获取class构造函数的返回类型
 ```ts
@@ -284,6 +400,17 @@ type CarType = InstanceType<typeof Car>;
 // vue中使用
 type dialog = InstanceType<typeof ElDialog>;
 
+```
+
+### 函数参数类型(Parameters)
+> 获取函数的参数类型组成的 元组
+```ts
+type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
+```
+### 函数返回值类型(ReturnType)
+> 获取函数的返回值类型
+```ts
+type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
 ```
 
 ## 声明、引入
@@ -373,3 +500,6 @@ const formatKeyValueArray = <T extends Record<string, any>>(obj: T):{
       value: key,
     }));
 ```
+
+## 练习
+[类型体操](https://github.com/type-challenges/type-challenges)

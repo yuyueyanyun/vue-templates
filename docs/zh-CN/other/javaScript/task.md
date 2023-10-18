@@ -23,7 +23,7 @@ const p = Promise.resolve(4);
 p.then((v) => {
   console.log(v);
 });
-
+queueMicrotask(()=> console.log('queueMicrotask'));
 setTimeout(() => {
   console.log(5);
   setTimeout(() => {
@@ -43,10 +43,10 @@ new Promise((resolve) => {
 }).then(() => {
   console.log(10);
 });
-// 1 3 9 4 10 2 5 7 8 6
+// 1 3 9 4 'queueMicrotask' 10 2 5 7 8 6
 ```
 ## 任务
-由执行诸如从头执行一段程序、执行一个事件回调或一个 interval/timeout 被触发之类的标准机制而被调度的任意 JavaScript 代码。这些都在任务队列（task queue）上被调度。
+> 由执行诸如从头执行一段程序、执行一个事件回调或一个 interval/timeout 被触发之类的标准机制而被调度的任意 JavaScript 代码。这些都在任务队列（task queue）上被调度。
 * 一段新程序或子程序被直接执行时（比如从一个控制台，或在一个 `<script>` 元素中运行代码）。
 * 触发了一个事件，将其回调函数添加到任务队列时。
 * 执行到一个由 setTimeout() 或 setInterval() 创建的 timeout 或 interval，以致相应的回调函数被添加到任务队列时。
@@ -61,10 +61,14 @@ new Promise((resolve) => {
 
 
 ## 微任务
-可以理解是在当前 task 执行结束后立即执行的任务。也就是说，在当前task任务后，下一个task之前，在渲染之前。
+> 可以理解是在当前 task 执行结束后立即执行的任务。也就是说，在当前task任务后，下一个task之前，在渲染之前。
+
+***谨慎使用。过多的微任务可能会导致微任务队列堆积，影响主线程的执行效率。适当使用微任务可以优化异步代码的执行顺序和错误处理，但过度依赖微任务也可能引发其他问题。***
+
 
 |  任务   | 浏览器   | node |
 | ------- | ---------------------------| --- |
 | process.nextTick | false | true |
 | MutationObserver | true | false |
 | Promise.then catch finally | true | true |
+| queueMicrotask | true | true (>=11.0.0) |

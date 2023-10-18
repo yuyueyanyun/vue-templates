@@ -83,7 +83,7 @@ const copyCode = async () => {
             class="op-btn github"
             style="color: var(--text-color-light)"
           >
-            <a href="" rel="noreferrer noopener" target="_blank">
+            <a href="https://github.com/yuyueyanyun/vue-templates" rel="noreferrer noopener" target="_blank">
               <i-ri-github-line />
             </a>
           </ElIcon>

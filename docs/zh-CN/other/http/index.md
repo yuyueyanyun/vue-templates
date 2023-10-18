@@ -19,18 +19,48 @@ outline: deep
 |  no-transform | 不得对资源进行转换或转变。Content-Encoding、Content-Range、Content-Type等 HTTP 头不能由代理修改。| Cache-Control: no-transform |
 |  only-if-cached | 表明客户端只接受已缓存的响应 | Cache-Control: only-if-cached |
 
+### Accept 资源类型
+> 告知（服务器）客户端可以处理的内容类型。
+```
+Accept: text/event-stream
+```
 ### Content-Type 资源类型
-> 告诉客户端实际返回的内容的内容类型。
+> 表示本次 HTTP 事务回传的内容类型
 
 ```
 Content-Type: text/html; charset=utf-8
 Content-Type: application/json; charset=UTF-8
 ```
-* multipart/form-data需要在表单中进行文件上传时，就需要使用该格式。**new FormData()**
+* multipart/form-data需要在表单中进行文件上传时，需要使用该格式。**new FormData()**
+
+### Origin
+> 请求的来源（协议、主机、端口）
+## 请求方法
+> 定义了一组请求方法
+
+常用方法 get post put delete
+
+## 状态码
+常见的 HTTP 状态码：
+* 200 - 请求成功
+* 301 - 重定向。资源（网页等）被永久转移到其它URL
+* 404 - 请求的资源（网页等）不存在
+* 500 - 内部服务器错误
+
+| 分类 | 描述 |
+| ---- | -------------- |
+| 1** |	信息，服务器收到请求，需要请求者继续执行操作 |
+| 2** |	成功，操作被成功接收并处理 |
+| 3** |	重定向，需要进一步的操作以完成请求 |
+| 4** |	客户端错误，请求包含语法错误或无法完成请求 |
+| 5** |	服务器错误，服务器在处理请求的过程中发生了错误 |
+
+## 资源类型
 
 | 文件扩展名 |  Content-Type | 文件类型 |
 | ------- | ------------ | -------------- |
 | .* | application/octet-stream | 二进制流数据（如常见的文件下载） |
+|  | [text/event-stream](../webAPI/EventSource.md) | ***用于从服务器推送数据到客户端*** |
 | .aac | audio/aac | AAC音频 |
 | .abw | application/x-abiword | AbiWord 文档 |
 | .arc | application/x-freearc | 存档文档(多个文件嵌入) |
@@ -100,24 +130,3 @@ Content-Type: application/json; charset=UTF-8
 | .3g2 | video/3gpp2 | 3GPP2 audio/video 容器 |
 | .7z | application/x-7z-compressed | 7-zip |
 
-### Origin
-> 请求的来源（协议、主机、端口）
-## 请求方法
-> 定义了一组请求方法
-
-常用方法 get post put delete
-
-## 状态码
-常见的 HTTP 状态码：
-* 200 - 请求成功
-* 301 - 重定向。资源（网页等）被永久转移到其它URL
-* 404 - 请求的资源（网页等）不存在
-* 500 - 内部服务器错误
-
-| 分类 | 描述 |
-| ---- | -------------- |
-| 1** |	信息，服务器收到请求，需要请求者继续执行操作 |
-| 2** |	成功，操作被成功接收并处理 |
-| 3** |	重定向，需要进一步的操作以完成请求 |
-| 4** |	客户端错误，请求包含语法错误或无法完成请求 |
-| 5** |	服务器错误，服务器在处理请求的过程中发生了错误 |

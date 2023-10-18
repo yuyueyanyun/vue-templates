@@ -7,6 +7,15 @@ outline: deep
 # 反射 Reflection
 ## Reflect 非构造函数
 静态方法与 [proxy handler] 方法的命名相同。
+
+```js
+const duck = {
+  name: 'Maurice',
+  color: 'white',
+}
+
+Reflect.has(duck, 'color'); // true
+```
 ## Proxy 创建一个对象的代理
 实现基本操作的拦截和自定义。
 
