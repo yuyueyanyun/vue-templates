@@ -59,6 +59,13 @@ other/visual_design/animation/mix_blend_mode
 other/visual_design/animation/filter_css
 
 :::
+## backgroundImage
+### 渐变
+:::demo 
+
+other/visual_design/animation/filter_score
+
+:::
 
 ## scroll
 * [scroll-css](../css/scroll.md)

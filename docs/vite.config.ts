@@ -1,4 +1,5 @@
 import path from 'path'
+import fs from 'fs'
 import { defineConfig } from 'vite'
 // import VueMacros from 'unplugin-vue-macros/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -32,6 +33,21 @@ const options = {
   buttonLabel: "搜索",
   placeholder: "情输入关键词",
 };
+
+function mediapipe_workaround() {
+  return {
+    name: 'mediapipe_workaround',
+    load(id: string) {
+      if (path.basename(id) === 'selfie_segmentation.js') {
+        let code = fs.readFileSync(id, 'utf-8');
+        code += 'exports.SelfieSegmentation = SelfieSegmentation;';
+        return { code };
+      } else {
+        return null;
+      }
+    },
+  };
+}
 
 export default defineConfig(async ({ mode }) => {
   return {
@@ -77,5 +93,10 @@ export default defineConfig(async ({ mode }) => {
     optimizeDeps: {
       include: [],
     },
+    build: {
+      rollupOptions: {
+        plugins: [mediapipe_workaround()]
+      }
+    }
   }
 })

@@ -332,8 +332,22 @@ defineExpose({
 
 ### defineOptions
 > 可以在一个宏函数中设置 name, props, emits, render。
+* setup中使用
+<!-- HACK -->
+~~**unplugin-vue-define-options**~~
 ```
 npm i -D unplugin-vue-define-options @vue-macros/volar
+```
+```js
+// vite.config.ts
+import DefineOptions from 'unplugin-vue-define-options/vite';
+
+export default defineConfig({
+  plugins: [
+    DefineOptions(),
+    // ...
+  ]
+})
 ```
 ```vue
 <script setup>
@@ -342,6 +356,28 @@ defineOptions({
   inheritAttrs: false,
 })
 </script>
+```
+**vite-plugin-vue-setup-extend**
+```
+npm i vite-plugin-vue-setup-extend -D
+```
+
+```js
+// vite.config.ts
+import vueSetupExtend  from 'vite-plugin-vue-setup-extend';
+
+export default defineConfig({
+  plugins: [
+    vueSetupExtend(),
+    // ...
+  ]
+})
+```
+```vue
+<script setup name="App">
+
+</script>
+
 ```
 ### 生命周期钩子
 | 钩子 | 描述 |

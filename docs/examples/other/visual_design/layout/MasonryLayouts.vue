@@ -1,14 +1,25 @@
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue';
+import img1 from "/public/images/visual_design/layout/d327c52a.jpg"
+import img2 from "/public/images/visual_design/layout/dbd623e3.jpg"
+import img3 from "/public/images/visual_design/layout/e7c8df7d.jpg"
+import img4 from "/public/images/visual_design/layout/e55cd06c.jpg"
+import img5 from "/public/images/visual_design/layout/e430aae1.png"
+import img6 from "/public/images/visual_design/layout/ed6d9a11.jpg"
+import img7 from "/public/images/visual_design/layout/f44f33e9.jpg"
+import img8 from "/public/images/visual_design/layout/f82dcd2c.png"
+import img9 from "/public/images/visual_design/layout/f160c0ae.jpg"
+import img10 from "/public/images/visual_design/layout/f354e378.png"
+
+
 
 interface DataItem {
   width: number;
   height: number;
   src: string
 }
-const ctx = import.meta.glob(['/public/images/visual_design/layout/*.png', '/public/images/visual_design/layout/*.jpg'],
-  { eager: true, import: 'default' });
 
+const imgs = [ img1, img2, img3, img4, img5, img6, img7, img8, img9, img10]
 const loadingFile = (img: HTMLImageElement):Promise<DataItem> => new Promise((resolve) => {
   img.onload = () => {
     resolve({
@@ -18,11 +29,12 @@ const loadingFile = (img: HTMLImageElement):Promise<DataItem> => new Promise((re
     }) 
   }
 })
-const getData = Promise.all(Object.keys(ctx).map(async(list) => {
-  const img = new Image();
-  img.src = list;
-  return loadingFile(img)
-})) 
+const getData = Promise.all(imgs.map((item) => {
+    const img = new Image();
+    img.src = item;
+    return loadingFile(img)
+  }
+))
 
 interface Row extends DataItem {
   top: number;
@@ -47,7 +59,6 @@ const getColNum = () => {
 }
 const runLayout = async() => {
   const data = await getData;
-  console.log(data)
   waterfall_list.value = data.map((item) => {
     const minIndex = height_list.value.findIndex((val) => val === Math.min(...height_list.value));
     const config = {

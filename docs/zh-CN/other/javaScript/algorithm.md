@@ -6,6 +6,46 @@ outline: deep
 
 # 算法
 
+## 去重 
+### filter、indexOf
+```js
+var deduped = [ 1, 1, 'a', 'a' ]
+  .filter((el, i, arr) => arr.indexOf(el) === i);
+
+console.log(deduped); // [ 1, 'a' ]
+```
+### Set
+```js
+var deduped = Array.from(new Set([ 1, 1, 'a', 'a', NaN, NaN ]) );
+
+console.log(deduped); // [ 1, 'a', NaN ]
+```
+### 哈希表
+> 当元素为对象(Object)
+
+**哈希表在Javascript里是一个简单的Object，它的key永远是String类型。使用的JSON.stringify, 使key唯一**
+```js
+function dedup(arr) {
+	var hashTable = {};
+
+	return arr.filter(function (el) {
+		var key = JSON.stringify(el);
+		var match = Boolean(hashTable[key]);
+
+		return (match ? false : hashTable[key] = true);
+	});
+}
+
+var deduped = dedup([
+	{ a: 1 },
+	{ a: 1 },
+	[ 1, 2 ],
+	[ 1, 2 ]
+]);
+
+console.log(deduped); // [ {a: 1}, [1, 2] ]
+```
+
 ## 递归
 > 函数中存在着调用函数本身的情况，这种现象就叫递归。
 

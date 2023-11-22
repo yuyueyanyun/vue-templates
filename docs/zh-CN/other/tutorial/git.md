@@ -99,6 +99,25 @@ git commit --amend
 | type | 用于说明git commit的类别<br>feat：新功能； fix：修复；docs：文档，style：格式（不影响代码运行的变动）；refactor：重构；perf：优化；test：增加测试；chore：构建过程或辅助工具的变动。 | true |
 | scope | 说明 commit 影响的范围，比如数据层、控制层、视图层 | false |
 | subject | 简短描述 | true |
+
+## tag
+**通常用于发布版本。**
+```
+git tag <tagName>
+
+<!-- 查看标签 -->
+git tag
+git show <tagName>
+
+<!-- 推送标签 -->
+git push origin <tagName>
+git push origin --tags  推送所有
+
+<!-- 删除标签 -->
+git tag -d <tagName>   本地
+git push origin :refs/tags/<tagName>
+```
+
 ## push
 * 推送至远端并关联
 ```
@@ -122,12 +141,17 @@ git push --force-with-lease
 ```
 git log
 git log [--oneline | --graph ]
+
 ```
 | 参数 | 说明  |
 | -- | ------  |
 | --oneline | 查看历史记录的简洁的版本。|
 | --graph | 查看历史中什么时候出现了分支、合并。以下为相同的命令，开启了拓扑图 |
 
+* 显示分支管理（如：显示删除分支的操作）
+```
+git reflog show 
+```
 
 ## reset 回退
 

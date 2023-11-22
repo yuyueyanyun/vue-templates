@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: zh-CN/template/installation
+      link: zh-CN/template/base/installation
     - theme: alt
       text: View on GitHub
       link: https://github.com/yuyueyanyun/vue-templates
