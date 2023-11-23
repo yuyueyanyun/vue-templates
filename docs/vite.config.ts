@@ -95,7 +95,7 @@ export default defineConfig(async ({ mode }) => {
     },
     build: {
       rollupOptions: {
-        plugins: []
+        plugins: [mediapipe_workaround()]
       }
     }
   }
