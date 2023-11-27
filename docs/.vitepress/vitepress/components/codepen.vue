@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<{
   html?: string,
   css?: string,
   javascript?: string,
-  height: number,
+  height?: number,
 }>(), {
   height: 300
 })
