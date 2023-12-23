@@ -9,6 +9,12 @@ export default {
       ]
     },
     {
+      text: '工具库',
+      items: [
+        { text: 'http', link: '/zh-CN/template/bridge/http' },
+      ]
+    },
+    {
       text: 'vue',
       items: [
         { text: '使用', link: '/zh-CN/template/vue/base'},
