@@ -109,4 +109,9 @@ other/visual_design/animation/path
 other/visual_design/animation/polygon
 
 :::
+:::demo
+
+other/visual_design/animation/bgImg-transform_svg
+
+:::
 

@@ -14,8 +14,8 @@ http 基于 axios 提供统一的请求层，包含如下特性
 
 ## 安装
 ```
-npm init @yuyueyanyun/http@latest
-yarn init @yuyueyanyun/http@latest
+npm init @yuyueyanyun/http
+yarn init @yuyueyanyun/http
 ```
 ## 使用
 > 配置将会按优先级进行合并。 请求的 config > 实例的options 

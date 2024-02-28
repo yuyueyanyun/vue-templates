@@ -37,8 +37,27 @@ export default {
       link: '/zh-CN/template/principle/annotation',
     },
   ],
-  '/zh-CN/deep_learn/': [
-    { text: '识别图片文字', link: '/zh-CN/deep_learn/picture/tesseract' },
+  // '/zh-CN/deep_learn/': [
+  //   {
+  //     text: 'html',
+  //     item: [   
+  //       { text: '识别图片文字', link: '/zh-CN/deep_learn/picture/tesseract' },
+  //     ]
+  //   }
+  // ],
+  '/zh-CN/file/': [
+    {
+      text: '文件预览',
+      items: [   
+        { 
+          text: 'excel',
+          items: [
+            { text: 'xlsx', link: '/zh-CN/file/excel/xlsx', },
+            { text: 'handsontable', link: '/zh-CN/file/excel/handsontable', },
+          ]  
+       },
+      ]
+    }
   ],
   '/zh-CN/other/': [
     {

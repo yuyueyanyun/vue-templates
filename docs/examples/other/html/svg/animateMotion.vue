@@ -11,6 +11,7 @@ const htmlTxt = ref(`<svg viewBox="0, 0, 300, 200">
     width="24"
   >
     <animateMotion 
+      id="airid"
       calcMode="linear"
       dur="10s"
       keyPoints="0;0.3;0.8;1"
@@ -21,6 +22,18 @@ const htmlTxt = ref(`<svg viewBox="0, 0, 300, 200">
       <mpath xlink:href="#path1"/>
     </animateMotion>
   </image>
+  <circle 
+    cx="60" cy="60"
+    r="0"
+  >
+    <animate
+      attributeName="r"
+      dur="10s"
+      values="10; 20; 10"
+      begin="airid.begin"
+      repeatCount="indefinite"
+    />
+  </circle>
 </svg>`)
 const cssTxt = `svg {
   height: 160px;

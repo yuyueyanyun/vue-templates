@@ -38,3 +38,7 @@ html {
 .DocSearch-Button:hover {
   background-color: #f5f5f6;
 }
+
+.vp-doc .handsontable table {
+  display: table;
+}

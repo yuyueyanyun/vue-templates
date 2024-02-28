@@ -24,7 +24,8 @@ interface NavItemWithChildren {
 const nav:NavItem[] = [
   { text: '模板', link: '/zh-CN/template/base/installation' },
   // { text: '深度学习', link: '/zh-CN/deep_learn/picture/tesseract' },
-  { text: '其它', link: '/zh-CN/other/visual_design/animation' },
+  { text: '文件预览', link: '/zh-CN/file/excel/xlsx' },
+  { text: '随笔', link: '/zh-CN/other/visual_design/animation' },
 ]
 export default nav
 

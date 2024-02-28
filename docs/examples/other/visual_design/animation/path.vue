@@ -21,7 +21,7 @@ setAirLine();
 </script>
 <template>
   <div class="air_svg">
-    <svg width="100%" height="100%" view-box="0 0 300 200">
+    <svg width="100%" height="100%" viewBox="0 0 300 200">
       <path id="path1" :d="airLine" fill="none" stroke="blue" stroke-width="1"  />
       <image 
         :xlink:href="airUrl" 
