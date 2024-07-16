@@ -1,6 +1,7 @@
 ---
 title: storage
 lang: zh-CN
+outline: deep
 ---
 
 # 存储
@@ -30,7 +31,7 @@ sessionStorage.clear();
 other/webAPI/storage/indexedDB
 :::
 
-1、打开数据库
+### 打开数据库
 * 如果数据库不存在，open 操作会创建该数据库，然后 onupgradeneeded 事件被触发，你需要在该事件的处理函数中创建数据库模式。
 * 如果数据库已经存在，但指定了一个更高的数据库版本，会直接触发 onupgradeneeded 事件，允许你在处理函数中更新数据库模式。
 
@@ -56,7 +57,7 @@ request.onupgradeneeded = function(event) {
 ```
 keyPath：主键；autoIncrement：是否自增，可以让 IndexedDB 自动生成主键。
 
-2、 事务
+### 事务
 > 任何对于数据库数据的读取和修改操作只能在事务中进行。
 ```javascript
 const transaction = db.transaction("tableName", ['readonly' | 'readwrite' | 'versionchange' ]);
@@ -72,7 +73,9 @@ transaction.abort();
 设置事务的模式：`readonly`只读、`readwrite`读写、
 `versionchange`修改数据库模式或结构时使用（包括新建或删除对象仓库或索引）。
 
-3、添加 **数据是一个对象，且必须包含索引键值对**
+### 添加数据
+ 
+**数据是一个对象，且必须包含索引键值对**
 ```javascript
 const request = objectStore.add({myKey: 'key', name: 'nameV'});
 request.onsuccess = () => {
@@ -80,7 +83,9 @@ request.onsuccess = () => {
 request.onerror = () => {
 };
 ```
-3、修改*如果数据库中没有该条数据，则会默认增加该条数据，否则更新。*
+### 修改
+
+**如果数据库中没有该条数据，则会默认增加该条数据，否则更新。**
 ```javascript
 const request = objectStore.put({myKey: 'key', name: 'nameV1'});
 request.onsuccess = () => {
@@ -88,7 +93,7 @@ request.onsuccess = () => {
 request.onerror = () => {
 };
 ```
-4、查询
+### 查询
 ```javascript
 // 通过主键获取数据
 const request = objectStore.get('key');
@@ -118,7 +123,7 @@ requestCursor.onsuccess = (e) => {
 */
 
 ```
-5、删除数据
+### 删除数据
 ```javascript
 // 通过主键删除数据
 const request = objectStore.delete('key');
@@ -129,9 +134,8 @@ request.onsuccess = () => {
 request.onerror = () => {
 };
 ```
-6、删除对象仓库
+### 删除对象仓库
 ```javascript
-// 通过主键删除数据
 const request = objectStore.clear();
 request.onsuccess = () => {
 };

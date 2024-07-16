@@ -199,7 +199,16 @@ export default {
     },
     {
       text: 'http',
-      link: '/zh-CN/other/http/index',
+      items: [
+        {
+          text: '概述',
+          link: '/zh-CN/other/http/index',
+        },
+        {
+          text: 'cookie',
+          link: '/zh-CN/other/http/Cookie',
+        }
+      ]
     },
     {
       text:  "视觉设计",

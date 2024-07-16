@@ -28,6 +28,7 @@ git init newrepo
 git clone <repo>
 ```
 从现有 Git 仓库中拷贝项目
+
 ## 分支管理：branch
 ### 创建分支
 ```
@@ -114,8 +115,14 @@ git push origin <tagName>
 git push origin --tags  推送所有
 
 <!-- 删除标签 -->
-git tag -d <tagName>   本地
+# 删除本地标签
+git tag -d <tagName>
+# 删除远程标签
 git push origin :refs/tags/<tagName>
+# 删除所有本地标签
+git tag -d $(git tag) 
+# 删除远程所有标签
+git tag -l | xargs -n 1 git push --delete origin
 ```
 
 ## push
@@ -200,6 +207,27 @@ git rebase master  # 分支历史看起来像没有经过任何合并一样
 ```
 --continue
 ```
+## remote 
+### 查看当前远程仓库
+```
+git remote -v
+```
+### 添加新的远程仓库
+> 保留现有的 origin 远程仓库，新的远程仓库并使用不同的名称：
+```
+git remote add new-origin https://github.com/yuyueyanyun/vue-templates.git
+
+git push new-origin branch-name
+```
+### 修改远程仓库的 URL
+```
+git remote set-url origin https://github.com/yuyueyanyun/vue-templates.git
+
+// 或删除当前远程仓库地址，再添加
+git remote remove origin
+git remote add origin https://github.com/yuyueyanyun/vue-templates.git
+```
+
 ## 多ssh-key
 >我们在日常工作中会遇到公司有个 gitlab，还有些自己的一些项目放在 github 上。这样就导致我们要配置不同的 ssh-key 对应不同的环境。
 * 生成私钥
@@ -217,8 +245,39 @@ ssh-add ~/.ssh/id_rsa
 ```
 如果执行 ssh-add 时提示 "Could not open a connection to your authentication agent"，可执行一下命令后再执行`ssh-add`
 
+```
+ssh-agent bash
+```
+
 之后我们需要将生成的密钥对中的公钥里的内容用文本编辑器打开，复制下来，添加到对应的平台上面，比如公司的 GitLab 或者 GitHub 等。
 
-> **user.name和user.name 保持和github账号一致**
+* 新增config 配置
+若系统盘用户名下的 .ssh 目录下无 config 文件，那么新建一个 config 文件。该文件没有文件后缀名，类型显示为文件，用记事本等打开进行编辑。
+
+```
+# 配置文件参数
+# Host : 配置对应的的主机名和 ssh 文件（可以直接填写 ip 地址）
+# HostName : 要登录主机的主机名（建议与 Host 一致）
+# AddKeysToAgent : 配置是否将生成的密钥添加到 ssh-agent 中
+# PreferredAuthentications ：配置登录的验证方式(含密码可自行查询配置方式)
+# IdentityFile : 指明上面 User 对应的配置路径
+# User : 登录名（如 github 的 username）
+# Port: 端口号（默认 22）
+
+# github.com
+Host github.com
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile C:/Users/tag_a12/.ssh/github_rsa
+User your_email@example.com
+
+# aliyun.com
+Host code.aliyun.com
+HostName code.aliyun.com
+PreferredAuthentications publickey
+IdentityFile C:/Users/tag_a12/.ssh/aliyun_rsa
+User your_email@example.com
+```
+> **user.name和user.email 保持和github账号一致**
 ## 推荐使用
 [sourcetree](https://www.sourcetreeapp.com/)
