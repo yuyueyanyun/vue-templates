@@ -40,7 +40,8 @@ git branch 没有参数时，会列出你在本地的分支。
 git checkout -b (branchname) origin/master
 ```
 master 分支为基准，创建新分支并立即切换到该分支下
-###删除分支
+
+### 删除分支
 删除本地分支
 ```
 git branch -d (branchname)
@@ -236,6 +237,8 @@ ssh-keygen -t rsa -C 'youremail@yourcompany.com'
 ```
 ```
 ssh-keygen -t rsa -C 'youremail@your.com'
+<!-- 下一步修改地址 -->
+id_rsa.github
 ```
 * 添加私钥
 1. `ssh-add -l` 来确私钥列表
@@ -268,14 +271,14 @@ ssh-agent bash
 Host github.com
 HostName github.com
 PreferredAuthentications publickey
-IdentityFile C:/Users/tag_a12/.ssh/github_rsa
+IdentityFile  ~/.ssh/id_rsa.github
 User your_email@example.com
 
 # aliyun.com
 Host code.aliyun.com
 HostName code.aliyun.com
 PreferredAuthentications publickey
-IdentityFile C:/Users/tag_a12/.ssh/aliyun_rsa
+IdentityFile ~/.ssh/id_rsa
 User your_email@example.com
 ```
 > **user.name和user.email 保持和github账号一致**
