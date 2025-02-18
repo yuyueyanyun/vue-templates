@@ -6,56 +6,59 @@ outline: deep
 
 # 算法
 
-## 去重 
+## 去重
+
 ### filter、indexOf
+
 ```js
-var deduped = [ 1, 1, 'a', 'a' ]
-  .filter((el, i, arr) => arr.indexOf(el) === i);
+var deduped = [1, 1, 'a', 'a'].filter((el, i, arr) => arr.indexOf(el) === i);
 
 console.log(deduped); // [ 1, 'a' ]
 ```
+
 ### Set
+
 ```js
-var deduped = Array.from(new Set([ 1, 1, 'a', 'a', NaN, NaN ]) );
+var deduped = Array.from(new Set([1, 1, 'a', 'a', NaN, NaN]));
 
 console.log(deduped); // [ 1, 'a', NaN ]
 ```
+
 ### 哈希表
+
 > 当元素为对象(Object)
 
-**哈希表在Javascript里是一个简单的Object，它的key永远是String类型。使用的JSON.stringify, 使key唯一**
+**哈希表在 Javascript 里是一个简单的 Object，它的 key 永远是 String 类型。使用的 JSON.stringify, 使 key 唯一**
+
 ```js
 function dedup(arr) {
-	var hashTable = {};
+  var hashTable = {};
 
-	return arr.filter(function (el) {
-		var key = JSON.stringify(el);
-		var match = Boolean(hashTable[key]);
+  return arr.filter(function (el) {
+    var key = JSON.stringify(el);
+    var match = Boolean(hashTable[key]);
 
-		return (match ? false : hashTable[key] = true);
-	});
+    return match ? false : (hashTable[key] = true);
+  });
 }
 
-var deduped = dedup([
-	{ a: 1 },
-	{ a: 1 },
-	[ 1, 2 ],
-	[ 1, 2 ]
-]);
+var deduped = dedup([{ a: 1 }, { a: 1 }, [1, 2], [1, 2]]);
 
 console.log(deduped); // [ {a: 1}, [1, 2] ]
 ```
 
 ## 递归
+
 > 函数中存在着调用函数本身的情况，这种现象就叫递归。
 
-* 效率低、占用内存。有栈溢出的风险
+- 效率低、占用内存。有栈溢出的风险
+
 ```js
 const factorial = (n) => {
   if (n === 1) {
     return n;
   }
-  return (n * factorial(n - 1));
+  return n * factorial(n - 1);
 };
 console.log(factorial(5)); // 120
 
@@ -71,13 +74,15 @@ factorial(5)
 ```
 
 ### 尾递归
-* 引擎优化。计算仅占用常量栈空间
+
+- 引擎优化。计算仅占用常量栈空间
+
 ```js
-const factorial = (n, x=1) => {
+const factorial = (n, x = 1) => {
   if (n === 1) {
     return x;
   }
-  return factorial(n-1, x * n);
+  return factorial(n - 1, x * n);
 };
 console.log(factorial(5)); // 120
 
@@ -129,13 +134,17 @@ A(n, ['1', '1']);
 ```
 
 ## 函数缓存
+
 > 将函数运算过的结果进行缓存，本质上就是用空间（缓存存储）换时间（计算过程）
 
-如：如数据字典中的数据，第一次请求的时候全部拿过来保存在js对象中，以后需要的时候就不用每次都去请求服务器。
+如：如数据字典中的数据，第一次请求的时候全部拿过来保存在 js 对象中，以后需要的时候就不用每次都去请求服务器。
 
 ## 节流、防抖
+
 ### 节流
+
 > 单位时间内事件只能触发一次，如果被频繁触发，那么节流函数会按照一定的频率来执行函数。
+
 ```js
 /**
  * 节流
@@ -193,10 +202,11 @@ function throttle(fn, interval, immediate = true, trailing = false) {
 }
 ```
 
-
 ### 防抖
-> 函数的执行延迟一定时间，如果在该时间内重新触发事件，那么延迟的时间会重置，只有真正达到延迟时间，才会执行回调函数。***实现防抖函数的核心是使用setTimeout***
-``` js
+
+> 函数的执行延迟一定时间，如果在该时间内重新触发事件，那么延迟的时间会重置，只有真正达到延迟时间，才会执行回调函数。**_实现防抖函数的核心是使用 setTimeout_**
+
+```js
 /**
  * 防抖
  * @param fn 需要进行防抖处理的函数
@@ -206,39 +216,129 @@ function throttle(fn, interval, immediate = true, trailing = false) {
  */
 function debounce(fn, delay = 1000, immediate = false, cb) {
   // 保存setTimeout返回的Id
-  let time = null
+  let time = null;
   // 记录是否立即执行
-  let isImmediateInvoke = false
+  let isImmediateInvoke = false;
 
   function _debounce(...args) {
     // 存在定时器，则清除定时器
     if (time !== null) {
-      clearTimeout(time)
+      clearTimeout(time);
     }
 
     // 第一次触发，且需要触发第一次事件
     if (!isImmediateInvoke && immediate) {
       // 将函数的返回值保存到result中
-      const result = fn.apply(this, args)
+      const result = fn.apply(this, args);
       if (typeof cb === 'function') {
         // 结果以参数传递出去。
-        cb(result)
+        cb(result);
       }
       isImmediateInvoke = true;
     }
     time = setTimeout(() => {
-      fn.apply(this, args)
+      fn.apply(this, args);
       // 设置为false，下次的第一次触发事件能被立即执行
-      isImmediateInvoke = false
-    }, delay)
+      isImmediateInvoke = false;
+    }, delay);
   }
   // 返回真正被调用的函数
-  return _debounce
+  return _debounce;
 }
 ```
 
 **应用场景：**
-* 输入框频繁输入内容，搜索或者提交信息。
-* 频繁点击按钮，触发某个事件。
-* 监听浏览器滚动事件。
-* 监听用户缩放浏览器resize事件。
+
+- 输入框频繁输入内容，搜索或者提交信息。
+- 频繁点击按钮，触发某个事件。
+- 监听浏览器滚动事件。
+- 监听用户缩放浏览器 resize 事件。
+
+## 双向链表
+
+> 双向链表是一种线性数据结构，它表示元素的集合，其中每个元素都指向下一个元素和上一个元素。双向链表中的第一个元素是 head，最后一个元素是 tail。
+
+```ts
+interface DoublyLinkedListNode<T> {
+  value: T;
+  next: DoublyLinkedListNode<T> | null;
+  prev: DoublyLinkedListNode<T> | null;
+}
+
+class DoublyLinkedList<T> {
+  private nodes: DoublyLinkedListNode<T>[];
+  constructor(values: T[]) {
+    this.nodes = values.map((value) => ({
+      value,
+      next: null,
+      prev: null,
+    }));
+    this.connectNodes();
+  }
+  private connectNodes() {
+    for (let i = 0; i < this.nodes.length; i++) {
+      if (i > 0) {
+        this.nodes[i].prev = this.nodes[i - 1];
+      }
+      if (i < this.nodes.length - 1) {
+        this.nodes[i].next = this.nodes[i + 1];
+      }
+    }
+  }
+
+  get size() {
+    return this.nodes.length;
+  }
+  get head() {
+    return this.size ? this.nodes[0] : null;
+  }
+
+  get tail() {
+    return this.size ? this.nodes[this.size - 1] : null;
+  }
+
+  public insertAt(index: number, value: T) {
+    const previousNode = this.nodes[index - 1] || null;
+    const nextNode = this.nodes[index] || null;
+    const node = { value, next: nextNode, prev: previousNode };
+
+    if (previousNode) previousNode.next = node;
+    if (nextNode) nextNode.prev = node;
+    this.nodes.splice(index, 0, node);
+  }
+  public unshift(value: T) {
+    this.insertAt(0, value);
+  }
+  // 添加一个节点到链表末尾
+  public append(value: T) {
+    this.insertAt(this.size, value);
+  }
+
+  public at(index: number) {
+    return this.nodes[index];
+  }
+
+  public removeAt(index: number) {
+    const previousNode = this.nodes[index - 1] || null;
+    const nextNode = this.nodes[index + 1] || null;
+
+    if (previousNode) previousNode.next = nextNode;
+    if (nextNode) nextNode.prev = previousNode;
+
+    return this.nodes.splice(index, 1);
+  }
+
+  public clear() {
+    this.nodes = [];
+  }
+
+  public reverse() {
+    this.nodes.reverse();
+    this.connectNodes();
+  }
+
+  *[Symbol.iterator]() {
+    yield* this.nodes;
+  }
+}
+```
