@@ -12,22 +12,24 @@ jobs:
         node-version: [18.x] # 配置所需node版本
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-      - name: npm install
+        # 检出（拉取）仓库代码，让后续的 CI 任务可以访问代码文件。
+        uses: actions/checkout@v4
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v5
+      # - name: Build with Jekyll
+      #   uses: actions/jekyll-build-pages@v1
+      #   with:
+      #     source: ./
+      #     destination: ./_site
+      - name: 安装 npm 依赖
       # 步骤执行指令
         run: npm install
       - name: docs
         run: |
           npm run docs:build --if-present
+      # 上传生成的静态文件，以便 GitHub Pages 进行后续部署。
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './docs/.vitepress/dist'
   # Deployment job
@@ -41,6 +43,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # 部署到 GitHub Pages。
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
