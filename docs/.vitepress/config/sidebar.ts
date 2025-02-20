@@ -286,6 +286,10 @@ export default {
         {
           text: 'GrapesJs',
           link: '/zh-CN/other/tutorial/GrapesJs'
+        },
+        {
+          text: 'sfc-loader',
+          link: '/zh-CN/other/tutorial/sfc-loader'
         }
       ]
     },
