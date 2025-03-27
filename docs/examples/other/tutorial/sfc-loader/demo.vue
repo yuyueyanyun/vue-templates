@@ -2,12 +2,12 @@
 import * as Vue from 'vue';
 import { defineAsyncComponent } from 'vue';
 import { loadModule } from 'vue3-sfc-loader';
-import vueCodemirror from 'vue-codemirror';
+// import * as Codemirror from 'vue-codemirror';
 import { text } from './demo';
 
 const moduleCache = {
   vue: Vue,
-  'vue-codemirror': vueCodemirror,
+  // 'vue-codemirror': Codemirror,
 };
 
 const options = {
@@ -39,7 +39,7 @@ const options = {
 };
 
 const DynamicComponent = defineAsyncComponent(() =>
-  loadModule('/demo/index.vue', options)
+  loadModule('demo.vue', options)
 );
 </script>
 
