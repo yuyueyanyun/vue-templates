@@ -22,21 +22,27 @@ const sfcOptions = {
 const store = ref<any>(null);
 const myWorker = Worker();
 
-myWorker.port.postMessage({
-  type: 'get',
-})
-myWorker.port.onmessage = (e) => {
-  let data = e.data;
-  if(data) {
-    sessionStorage.setItem('key', data);
-  } else {
-    data = sessionStorage.getItem('key');
-  }
+function setConfig(data: string) {
   store.value = new ReplStore({
     serializedState: data,
   });
 }
 
+let data = sessionStorage.getItem('key');
+if (!data) {
+  myWorker.port.postMessage({
+    type: 'get',
+  });
+} else {
+  setConfig(data);
+}
+
+myWorker.port.onmessage = (e) => {
+  if (e.data) {
+    sessionStorage.setItem('key', e.data);
+    setConfig(e.data);
+  }
+};
 
 </script>
 
