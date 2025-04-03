@@ -13,13 +13,13 @@ jobs:
     steps:
       - name: Checkout
         # 检出（拉取）仓库代码，让后续的 CI 任务可以访问代码文件。
-        # uses: actions/checkout@v4
+        uses: actions/checkout@v4
         # 等同
-        run: |
-          git init
-          git remote add origin https://github.com/${{ github.repository }}.git
-          git fetch --depth=1 origin ${{ github.ref }}
-          git checkout -f FETCH_HEAD
+        # run: |
+        #   git init
+        #   git remote add origin https://github.com/${{ github.repository }}.git
+        #   git fetch --depth=1 origin ${{ github.ref }}
+        #   git checkout -f FETCH_HEAD
       # - name: Setup Pages
       #   uses: actions/configure-pages@v5
       # - name: Build with Jekyll
